@@ -1,4 +1,4 @@
-import { requester } from '../requester/requester.js';
+import { requester } from './../requester/requester.js';
 
 class HomeController {
   constructor() {}
