@@ -19,23 +19,37 @@ class UserController {
              });
   }
 
-  signUp() {
+  showAccount(user) {
+    // This function will be removed later.
+
+    let span  = $('.account .email');
+
+    span.text(user.email);
+  }
+
+  signUp(sammy) {
     let email = $('#inputEmail').val(),
         password = $('#inputPassword').val();
 
     userService.signUpWithEmailAndPassword(email, password)
                .catch((error) => {
                  toastr.error(error.message);
+               })
+               .then(() => {
+                 sammy.redirect('#/home');
                });
   }
 
-  signIn() {
+  signIn(sammy) {
     let email = $('#inputEmail').val(),
         password = $('#inputPassword').val();
 
     userService.signInWithEmailAndPassword(email, password)
                .catch((error) => {
                  toastr.error(error.message);
+               })
+               .then(() => {
+                 sammy.redirect('#/home');
                });
 
   }
