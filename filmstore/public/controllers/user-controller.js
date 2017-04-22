@@ -1,13 +1,26 @@
-import { requester } from './../requester/requester.js';
+import { requester } from 'requester';
+
+import { userService } from 'userService';
 
 class UserController {
   constructor() {}
 
   loadSignUpPage() {
-    requester.get('./../templates/signup-page-template.html', 'text/html')
+    requester.get('./views/signup-page-template.html', 'text/html')
              .then((template) => {
                $('#main-content').html(template);
              });
+  }
+
+  loadSignInPage() {
+    requester.get('./views/signin-page.html', 'text/html')
+             .then((template) => {
+               $('#main-content').html(template);
+             });
+  }
+
+  signUp() {
+
   }
 }
 

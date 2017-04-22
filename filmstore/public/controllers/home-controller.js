@@ -1,10 +1,10 @@
-import { requester } from './../requester/requester.js';
+import { requester } from 'requester';
 
 class HomeController {
   constructor() {}
 
   loadHomePage() {
-    requester.get('./templates/home-page-template.html', 'text/html')
+    requester.get('./views/home-page-template.html', 'text/html')
              .then((template) => {
                $('#main-content').html(template);
              });
