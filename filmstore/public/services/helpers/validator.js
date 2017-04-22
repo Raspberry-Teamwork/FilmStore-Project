@@ -9,7 +9,7 @@ let validator = (function() {
 
   const ERROR_MESSAGES = {
         INVALID_EMAIL: 'The entered email is not valid please try again.',
-        INVALID_PASSWORD: 'The password must be between 6 and 20 characters long please try again.'
+        INVALID_PASSWORD: 'The password must be between 6 and 20 characters long and must have letters and digits please try again.'
   };
 
   function validateEmailAndPassword(email, password) {

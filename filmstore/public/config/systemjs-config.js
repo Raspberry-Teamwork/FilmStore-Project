@@ -8,7 +8,8 @@ SystemJS.config({
     'requester': './../requester/requester.js',
 
     'userService': './../services/user-service.js',
-    'validator': './../services/helpers/validator.js'
+    'validator': './../services/helpers/validator.js',
+    'error-handler': './../services/helpers/error-handler.js'
   }
 });
 

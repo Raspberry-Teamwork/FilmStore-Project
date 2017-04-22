@@ -499,3 +499,31 @@
 [info] 
 [info] Server listening at: http://localhost:5000
 [info] Shutting down...
+[debug] ----------------------------------------------------------------------
+[debug] Command:      D:\Developer\NodeJS\node.exe C:\Users\Dimitar\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] CLI Version:  3.6.0
+[debug] Platform:     win32
+[debug] Node Version: v6.9.2
+[debug] Time:         Sat Apr 22 2017 10:36:39 GMT-0200 (UTC-02)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/filmstore-92789  
+ Sat Apr 22 2017 10:36:39 GMT-0200 (UTC-02)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/filmstore-92789/tokens  
+ Sat Apr 22 2017 10:36:40 GMT-0200 (UTC-02)
+[debug] <<< HTTP RESPONSE 200
+[info] Starting Firebase development server...
+[info] 
+[info] Project Directory: C:\Users\Dimitar\Desktop\FilmStore - CoursePoject\MovieStore-Project\filmstore
+[debug] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/filmstore-92789  
+ Sat Apr 22 2017 10:36:41 GMT-0200 (UTC-02)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/584846956462/clients/_:getWebAppConfig  
+ Sat Apr 22 2017 10:36:42 GMT-0200 (UTC-02)
+[debug] <<< HTTP RESPONSE 200
+[info] Public Directory: public
+[info] 
+[info] Server listening at: http://localhost:5000
+[info] Shutting down...

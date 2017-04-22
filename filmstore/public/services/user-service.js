@@ -1,4 +1,5 @@
 import { validator } from 'validator';
+import { errorHandler } from 'error-handler';
 
 class UserService {
   constructor() {}
@@ -12,7 +13,9 @@ class UserService {
 
     return firebase.auth()
                    .createUserWithEmailAndPassword(email, password)
-                   .catch((error) => { console.log(error); });
+                   .catch((error) => {
+                     return Promise.reject({ message: errorHandler.handleFirebaseErrors(error) });
+                   });
   }
 
   signInWithEmailAndPassword(email, password) {
