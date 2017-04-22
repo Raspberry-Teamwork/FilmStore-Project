@@ -26,7 +26,18 @@ class UserController {
     userService.signUpWithEmailAndPassword(email, password)
                .catch((error) => {
                  toastr.error(error.message);
-               })
+               });
+  }
+
+  signIn() {
+    let email = $('#inputEmail').val(),
+        password = $('#inputPassword').val();
+
+    userService.signInWithEmailAndPassword(email, password)
+               .catch((error) => {
+                 toastr.error(error.message);
+               });
+
   }
 
   signOut() {

@@ -15,6 +15,17 @@ class UserService {
                    .catch((error) => { console.log(error); });
   }
 
+  signInWithEmailAndPassword(email, password) {
+    try {
+      validator.validateEmailAndPassword(email, password);
+    } catch(error) {
+      return Promise.reject({ message: error.message });
+    }
+
+    return firebase.auth()
+                   .signInWithEmailAndPassword(email, password);
+  }
+
   onAuthStateChanged(callback) {
     firebase.auth().onAuthStateChanged(callback);
   }
