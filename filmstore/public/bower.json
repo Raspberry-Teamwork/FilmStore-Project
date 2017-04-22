@@ -1,0 +1,21 @@
+{
+  "name": "public",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Dimitar"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Raspberry-Teamwork/MovieStore-Project",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "mocha": "^3.2.0",
+    "chai": "^3.5.0"
+  }
+}
