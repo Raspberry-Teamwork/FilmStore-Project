@@ -7,7 +7,8 @@ SystemJS.config({
     'firebase': './../node_modules/firebase/firebase.js',
     'requester': './../requester/requester.js',
 
-    'userService': './../services/user-service.js'
+    'userService': './../services/user-service.js',
+    'validator': './../services/helpers/validator.js'
   }
 });
 

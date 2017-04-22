@@ -20,7 +20,21 @@ class UserController {
   }
 
   signUp() {
+    let email = $('#inputEmail').val(),
+        password = $('#inputPassword').val();
 
+    userService.signUpWithEmailAndPassword(email, password)
+               .catch((error) => {
+                 toastr.error(error.message);
+               })
+  }
+
+  signOut() {
+    userService.signOut();
+  }
+
+  onAuthStateChanged(callback) {
+    userService.onAuthStateChanged(callback);
   }
 }
 

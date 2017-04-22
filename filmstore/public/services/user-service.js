@@ -1,12 +1,27 @@
-import { firebase } from 'firebase';
+import { validator } from 'validator';
 
 class UserService {
   constructor() {}
 
-  signUp(email, password) {
+  signUpWithEmailAndPassword(email, password) {
+    try {
+      validator.validateEmailAndPassword(email, password);
+    } catch(error) {
+      return Promise.reject({ message: error.message });
+    }
+
+    return firebase.auth()
+                   .createUserWithEmailAndPassword(email, password)
+                   .catch((error) => { console.log(error); });
+  }
+
+  onAuthStateChanged(callback) {
+    firebase.auth().onAuthStateChanged(callback);
+  }
+
+  signOut() {
     firebase.auth()
-            .createUserWithEmailAndPassword(email, password)
-            .catch((error) => { console.log(error); });
+            .signOut();
   }
 }
 
