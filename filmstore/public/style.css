@@ -1,3 +1,8 @@
 .invisible {
   display: none;
 }
+
+.imgNotFound {
+  margin-bottom: 100px;
+  margin-left: 250px;
+}
