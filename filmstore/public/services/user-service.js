@@ -19,6 +19,8 @@ class UserService {
   }
 
   signInWithEmailAndPassword(email, password) {
+
+    console.log('wrong tests');
     try {
       validator.validateEmailAndPassword(email, password);
     } catch(error) {

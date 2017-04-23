@@ -1,5 +1,4 @@
 import { requester } from 'requester';
-
 import { userService } from 'user-service';
 
 class UserController {
@@ -46,8 +45,9 @@ class UserController {
 
     userService.signInWithEmailAndPassword(email, password)
                .catch((error) => {
+
                  toastr.error(error.message);
-               })
+               });
               //  .then(() => {
               //    sammy.redirect('#/home');
               //  });
