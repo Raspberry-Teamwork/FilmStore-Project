@@ -1,6 +1,6 @@
 import { requester } from 'requester';
 
-import { userService } from 'userService';
+import { userService } from 'user-service';
 
 class UserController {
   constructor() {}

@@ -1,6 +1,7 @@
 import { homeController } from './controllers/home-controller.js';
 import { userController } from './controllers/user-controller.js';
 import { notFoundController } from './controllers/notFound-controller.js';
+import { moviesController } from './controllers/movies-controller.js';
 
 let app = $.sammy('#main-content', function() {
 
@@ -13,6 +14,8 @@ let app = $.sammy('#main-content', function() {
 
   this.post('#/signup', userController.signUp);
   this.post('#/signin', userController.signIn);
+
+  this.get('#/all-movies', moviesController.loadThePageWithTheAllMovies);
 
   this.notFound = function() {
     notFoundController.loadNotFoundPage();
