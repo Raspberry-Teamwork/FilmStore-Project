@@ -35,9 +35,9 @@ class UserController {
                .catch((error) => {
                  toastr.error(error.message);
                })
-               .then(() => {
-                 sammy.redirect('#/home');
-               });
+              //  .then(() => {
+              //    sammy.redirect('#/home');
+              //  });
   }
 
   signIn(sammy) {
@@ -48,9 +48,9 @@ class UserController {
                .catch((error) => {
                  toastr.error(error.message);
                })
-               .then(() => {
-                 sammy.redirect('#/home');
-               });
+              //  .then(() => {
+              //    sammy.redirect('#/home');
+              //  });
 
   }
 

@@ -16,6 +16,7 @@ let app = $.sammy('#main-content', function() {
   this.post('#/signin', userController.signIn);
 
   this.get('#/all-movies', moviesController.loadThePageWithTheAllMovies);
+  this.get('#/all-movies/:name', moviesController.loadCurrentMovie);
 
   this.notFound = function() {
     notFoundController.loadNotFoundPage();
