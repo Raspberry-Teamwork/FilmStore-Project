@@ -19,6 +19,7 @@ let app = $.sammy('#main-content', function() {
   this.get('#/all-movies/:name', moviesController.loadCurrentMovie);
 
   this.get('#/add-movie', moviesController.loadAddMoviePage);
+  this.get('#/add-movie-from-imdb', moviesController.loadAddMovieFromIMDBPage);
 
   this.notFound = function() {
     notFoundController.loadNotFoundPage();

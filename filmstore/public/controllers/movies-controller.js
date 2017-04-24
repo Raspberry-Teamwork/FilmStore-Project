@@ -42,6 +42,13 @@ class MoviesController {
                 $('#main-content').html(template);
              });
   }
+
+  loadAddMovieFromIMDBPage() {
+    requester.get('./views/add-movie-from-IMDB.html')
+             .then((template) => {
+               $('#main-content').html(template);
+             });
+  }
 }
 
 const moviesController = new MoviesController();
