@@ -18,6 +18,8 @@ let app = $.sammy('#main-content', function() {
   this.get('#/all-movies', moviesController.loadThePageWithTheAllMovies);
   this.get('#/all-movies/:name', moviesController.loadCurrentMovie);
 
+  this.get('#/add-movie', moviesController.loadAddMoviePage);
+
   this.notFound = function() {
     notFoundController.loadNotFoundPage();
   };

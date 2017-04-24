@@ -35,6 +35,13 @@ class MoviesController {
              });
 
   }
+
+  loadAddMoviePage() {
+    requester.get('./views/add-movie-page.html', 'text/html')
+             .then((template) => {
+                $('#main-content').html(template);
+             });
+  }
 }
 
 const moviesController = new MoviesController();
