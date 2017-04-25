@@ -20,19 +20,25 @@ class MoviesController {
   }
 
   loadCurrentMovie(sammy) {
+
     let title = sammy.path.split('/')[3],
         compile;
+
+    console.log(title);
 
     requester.get('./views/templates/current-movie-template.handlebars')
              .then((template) => {
                moviesService.getMovieByTitle(title)
                             .then((movie) => {
-
+                              console.log('asdasd');
                               compile = Handlebars.compile(template);
 
                               $('#main-content').html(compile(movie));
-                            });
+                            })
+                            .catch(console.log);
              });
+
+    console.log('asdasd');
 
   }
 
