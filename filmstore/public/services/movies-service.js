@@ -8,9 +8,7 @@ function convertObjectToArray(obj) {
         arr.push(obj[key]);
       }
     };
-
-    console.log(arr);
-
+    
     return arr;
 }
 
@@ -53,17 +51,19 @@ class MoviesService {
     const promise = new Promise((resolve, reject) => {
       const database = firebase.database().ref('/movies/');
       let movie,
-          moviesLength;
+          movies,
+          moviesLength,
+          currentMovie;
 
-      database.on('value', function(movies) {
-        moviesLength = movies.val().length;
+      database.on('value', function(snapshot) {
+        movies = snapshot.val();
 
         if (typeof movies === typeof {}) {
-         moviesLength = convertObjectToArray(movies).length;
+         movies = convertObjectToArray(movies);
         }
 
-        for (let i = 0; i < moviesLength; i += 1) {
-          let currentMovie = movies.val()[i];
+        for (let i = 0; i < movies.length; i += 1) {
+          currentMovie = movies[i];
 
           if (title === currentMovie.Title) {
             movie = currentMovie;

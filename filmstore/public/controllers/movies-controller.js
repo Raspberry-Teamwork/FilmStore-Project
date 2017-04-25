@@ -30,16 +30,12 @@ class MoviesController {
              .then((template) => {
                moviesService.getMovieByTitle(title)
                             .then((movie) => {
-                              console.log('asdasd');
                               compile = Handlebars.compile(template);
 
                               $('#main-content').html(compile(movie));
                             })
                             .catch(console.log);
              });
-
-    console.log('asdasd');
-
   }
 
   loadAddMoviePage() {
