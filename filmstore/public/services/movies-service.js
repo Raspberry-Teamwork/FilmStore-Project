@@ -1,13 +1,31 @@
+function convertObjectToArray(obj) {
+    let arr = [];
+
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        arr.push(obj[key]);
+      }
+    };
+
+    console.log(arr);
+
+    return arr;
+  }
+
 class MoviesService {
   constructor() {}
 
   getAllMovies() {
     const promise = new Promise((resolve, reject) => {
-      const database = firebase.database().ref('/movies');
+      const database = firebase.database().ref('/movies/');
       let movies = [];
 
         database.on('value', function(snapshot) {
           movies = snapshot.val();
+
+          if (typeof movies === typeof {}) {
+           movies = convertObjectToArray(movies);
+          }
 
           resolve(movies);
         });
@@ -39,6 +57,16 @@ class MoviesService {
     });
 
     return promise;
+  }
+
+  addMovie(movie) {
+    const database = firebase.database().ref('/movies');
+
+    return new Promise((resolve, reject) => {
+      database.push(movie);
+
+      resolve();
+    });
   }
 }
 

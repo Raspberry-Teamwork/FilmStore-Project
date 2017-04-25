@@ -5,9 +5,9 @@
       <div class="col-md-6">
         <h2>{{ Title }}</h2>
         <div class="details">
-          <h3>Actors : <p>{{ Actors }}</p></h3>
-          <h3>Release date : <p>{{ Released }}</h3>
-          <h3>Runtime : <p>{{ Runtime }}</h3>
+          <h3>Actors : <p>{{#if Actors}}{{ Actors }}{{else}}No Actors{{/if}}</p></h3>
+          <h3>Release date : <p>{{#if Released}}{{ Released }}{{else}}No release date{{/if}}</h3>
+          <h3>Runtime : <p>{{#if Runtime}}{{ Runtime }}{{else}}No runtime{{/if}}</h3>
         </div>
       </div>
       <div class=" pull-right image-container">

@@ -21,6 +21,8 @@ let app = $.sammy('#main-content', function() {
   this.get('#/add-movie', moviesController.loadAddMoviePage);
   this.get('#/add-movie-from-imdb', moviesController.loadAddMovieFromIMDBPage);
 
+  this.post('#/add-movie', moviesController.addMovie);
+
   this.notFound = function() {
     notFoundController.loadNotFoundPage();
   };

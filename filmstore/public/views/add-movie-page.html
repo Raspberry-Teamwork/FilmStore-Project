@@ -1,49 +1,49 @@
 <div class="container" >
   <div class="jumbotron">
     <div class="row">
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="#/add-movie" method="POST">
           <fieldset>
             <legend><h2><strong>Add movie</strong></h2></legend>
             <div class="form-group">
               <label class="col-lg-2 control-label">Title</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control" placeholder="Title">
+                <input type="text" class="form-control title" placeholder="Title">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-2 control-label">Year</label>
               <div class="col-lg-10">
-                <input type="textx" class="form-control" id="inputPassword" placeholder="Year">
+                <input type="textx" class="form-control year" id="inputPassword" placeholder="Year">
               </div>
             </div>
             <div class="form-group">
               <label for="textArea" class="col-lg-2 control-label">Description</label>
               <div class="col-lg-10">
-                <textarea class="form-control" rows="3" id="textArea"></textarea>
+                <textarea class="form-control description" rows="3" id="textArea"></textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-2 control-label">Released</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputPassword" placeholder="Released">
+                <input type="text" class="form-control released" id="inputPassword" placeholder="Released">
               </div>
             </div>
             <div class="form-group">
               <label for="select" class="col-lg-2 control-label">Runtime</label>
               <div class="col-lg-10">
-                <input class="form-control" placeholder="Runtime">
+                <input class="form-control runtime" placeholder="Runtime">
               </div>
             </div>
             <div class="form-group">
               <label for="select" class="col-lg-2 control-label">Image Url</label>
               <div class="col-lg-10">
-                <input class="form-control" placeholder="Image Url">
+                <input class="form-control img-url" placeholder="Image Url">
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-10 col-lg-offset-2">
                 <button class="btn btn-default">Back</button>
-                <button class="btn btn-md btn-success">Add</button>
+                <button type="submit" class="btn btn-md btn-success">Add</button>
               </div>
             </div>
           </fieldset>
