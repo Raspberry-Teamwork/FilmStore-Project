@@ -23,8 +23,6 @@ class MoviesController {
     let title = sammy.path.split('/')[3],
         compile;
 
-        console.log('asdasd');
-
     requester.get('./views/templates/current-movie-template.handlebars')
              .then((template) => {
                moviesService.getMovieByTitle(title)
@@ -52,34 +50,29 @@ class MoviesController {
              });
   }
 
-  // NOTE: The functionality for adding new movie is not ready yet. I just emplemented the basic functionality.
-
   addMovie() {
     const title = $('.title').val(),
           year = $('.year').val(),
           description = $('.description').val(),
           runtime = $('.runtime').val(),
           released = $('.released').val(),
-          imgUrl = $('.released').val();
+          imgUrl = $('.img-url').val();
 
     let movie;
-
-   // NOTE: VALIDATION
 
    movie = {
      Title: title,
      Year: year,
      Plot: description,
      Released: released,
-     Poster: imgUrl
+     Poster: imgUrl,
+     Runtime: runtime
    };
 
-   console.log(movie);
-
-  //  moviesService.addMovie(movie)
-  //               .then(() => {
-  //                 toastr.success('The film is added successfully.');
-  //               });
+   moviesService.addMovie(movie)
+                .catch((error) => {
+                  toastr.error(error.message);
+                });
   }
 }
 

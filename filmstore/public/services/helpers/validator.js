@@ -12,6 +12,30 @@ let validator = (function() {
         INVALID_PASSWORD: 'The password must be between 6 and 20 characters long and must have letters and digits please try again.'
   };
 
+  function isEmpty(word, errMessage) {
+    if (word.length < 1) {
+      throw new Error(errMessage);
+    }
+  }
+
+  function isBetween(word, minLength, maxLength, errMessage) {
+    if (word.length < minLength || word.length > maxLength) {
+      throw new Error(errMessage);
+    }
+  }
+
+  function validateUrl(url, errMessage) {
+    let isWrong = url.indexOf('http') < 0 &&
+                  url.indexOf('https') < 0;
+
+    console.log(url.indexOf('https'));
+    console.log(url);
+
+    if (isWrong) {
+      throw new Error(errMessage);
+    }
+  }
+
   function validateEmailAndPassword(email, password) {
     if (!PATTERNS.EMAIL_PATTERN.test(email)) {
       throw new Error(ERROR_MESSAGES.INVALID_EMAIL);
@@ -23,7 +47,10 @@ let validator = (function() {
   }
 
   return {
-    validateEmailAndPassword
+    validateEmailAndPassword,
+    isEmpty,
+    isBetween,
+    validateUrl
   }
 }());
 
