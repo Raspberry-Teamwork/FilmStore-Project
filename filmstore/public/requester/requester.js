@@ -16,6 +16,23 @@ class Requester {
       });
     });
   }
+
+  getFromOMDB(url) {
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        url: url,
+        method: 'GET',
+        crossDomain: true,
+        dataType: 'json',
+        success: function(data) {
+          resolve(data);
+        },
+        error: function(error) {
+          reject(error);
+        }
+      });
+    });
+  }
 }
 
 const requester = new Requester();

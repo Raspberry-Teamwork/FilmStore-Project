@@ -80,6 +80,18 @@ class MoviesController {
                   toastr.error(error.message);
                 });
   }
+
+  addMovieFromIMDB() {
+    let movieURL = 'http://img.omdbapi.com/?i=' + $('.imdbId').val() + '&apikey=f18a1ff5';
+
+    requester.getFromOMDB(movieURL)
+            .then(movie => {
+              // NOTE: Don't uncomement the row below because it isn't working.
+              // The creator of the OMDB is still not add our email.
+
+              //  moviesService.addMovie(movie);
+            });
+  }
 }
 
 const moviesController = new MoviesController();
