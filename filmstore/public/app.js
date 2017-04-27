@@ -37,12 +37,14 @@ userController.onAuthStateChanged(function(user) {
     $('#singin').addClass('invisible');
     $('.signup').addClass('invisible');
     $('.account').removeClass('invisible');
+    $('#add-trailer').removeClass('invisible');
 
     userController.showAccount(user);
 
     console.log('logged');
   } else {
     $('.browse').addClass('invisible');
+    $('#add-trailer').addClass('invisible');
     $('#singin').removeClass('invisible');
     $('.signup').removeClass('invisible');
     $('.account').addClass('invisible');

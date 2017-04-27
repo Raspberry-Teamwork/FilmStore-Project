@@ -58,17 +58,21 @@ class MoviesController {
           description = $('.description').val(),
           runtime = $('.runtime').val(),
           released = $('.released').val(),
-          imgUrl = $('.img-url').val();
+          imgUrl = $('.img-url').val(),
+          actors = $('.actors').val(),
+          trailerUrl = $('.trailer-url').val();
 
     let movie;
 
    movie = {
+     Actors: actors,
      Title: title,
      Year: year,
      Plot: description,
      Released: released,
      Poster: imgUrl,
-     Runtime: runtime
+     Runtime: runtime,
+     TrailerUrl: trailerUrl
    };
 
    moviesService.addMovie(movie)
