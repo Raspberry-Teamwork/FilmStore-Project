@@ -18,19 +18,35 @@ class UserController {
              });
   }
 
+  loadProfilePage() {
+    let compile;
+
+    requester.get('./views/profile-page.html', 'text/html')
+             .then((template) => {
+               userService.getCurrentUser()
+                          .then((user) => {
+                            compile = Handlebars.compile(template);
+
+                            $('#main-content').html(compile(user));
+                          });
+             });
+  }
+
   showAccount(user) {
-    // This function will be removed later.
+    let span  = $('.account .email'),
+        profileLink = '#/profile/' + user.displayName;
 
-    let span  = $('.account .email');
+    $('#profile').attr('href', profileLink);
 
-    span.text(user.email);
+    span.text(user.displayName);
   }
 
   signUp(sammy) {
     let email = $('#inputEmail').val(),
-        password = $('#inputPassword').val();
+        password = $('#inputPassword').val(),
+        username = $('#inputUsername').val();
 
-    userService.signUpWithEmailAndPassword(email, password)
+    userService.signUpWithEmailAndPassword(email, password, username)
                .catch((error) => {
                  toastr.error(error.message);
                })

@@ -4,7 +4,7 @@ import { errorHandler } from 'error-handler';
 class UserService {
   constructor() {}
 
-  signUpWithEmailAndPassword(email, password) {
+  signUpWithEmailAndPassword(email, password, username) {
     try {
       validator.validateEmailAndPassword(email, password);
     } catch(error) {
@@ -13,6 +13,11 @@ class UserService {
 
     return firebase.auth()
                    .createUserWithEmailAndPassword(email, password)
+                   .then(() => {
+                     firebase.auth().currentUser.updateProfile({
+                       displayName: username
+                     });
+                   })
                    .catch((error) => {
                      return Promise.reject({ message: errorHandler.handleFirebaseErrors(error) });
                    });
@@ -29,6 +34,12 @@ class UserService {
 
     return firebase.auth()
                    .signInWithEmailAndPassword(email, password);
+  }
+
+  getCurrentUser() {
+    const user = firebase.auth().currentUser;
+
+    return Promise.resolve(user);
   }
 
   onAuthStateChanged(callback) {
