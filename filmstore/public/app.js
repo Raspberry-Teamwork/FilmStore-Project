@@ -2,6 +2,7 @@ import { homeController } from './controllers/home-controller.js';
 import { userController } from './controllers/user-controller.js';
 import { notFoundController } from './controllers/notFound-controller.js';
 import { moviesController } from './controllers/movies-controller.js';
+import { searchController } from './controllers/search-controller.js';
 
 let app = $.sammy('#main-content', function() {
 
@@ -25,6 +26,8 @@ let app = $.sammy('#main-content', function() {
   this.post('#/add-movie-from-imdb', moviesController.addMovieFromIMDB);
 
   this.get('#/profile/:username', userController.loadProfilePage);
+
+  this.get('#/searcher', searchController.loadSearchPage);
 
   this.notFound = function() {
     notFoundController.loadNotFoundPage();

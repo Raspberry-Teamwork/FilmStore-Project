@@ -86,6 +86,7 @@ class MoviesController {
 
     requester.getFromOMDB(movieURL)
             .then(movie => {
+              console.log(movie);
               // NOTE: Don't uncomement the row below because it isn't working.
               // The creator of the OMDB is still not add our email.
 
