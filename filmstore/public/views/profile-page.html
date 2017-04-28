@@ -1,15 +1,27 @@
-<div class="container" >
-<div class="jumbotron">
+<div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <div class="details">
-        <img src="{{ photoUrl }}">
-        <h2><strong>Username : </strong>{{ displayName }} <button class="btn btn-info">Change</button></h2>
-        <h2><strong>Email : </strong>{{ email }} <button class="btn btn-info">Change</button></h2>
-        <h2><strong>Password : </strong><button class="btn btn-info">Change</button></h2>
-        <h2><strong>User ID : </strong>{{ uid }}</h2>
-      </div>
+  	<div class="col-md-9">
+
+      <div class="panel panel-default">
+			<div class="panel-body">
+              		<div class="row">
+                        <div class="col-xs-12 col-sm-8">
+                            <h2>{{ displayName }}</h2>
+                            <p><strong>Email: </strong>{{ email }} <a href="#" class="btn btn-info btn-xs change">Change</a></p>
+                            <p><strong>Password: </strong><a href="#" class="btn btn-info btn-xs change">Change</a></p>
+                            <p><strong>User Id: </strong>{{ uid }}</p>
+                          </div>
+                        <div class="col-xs-12 col-sm-4 text-center">
+                                <p href="#">Picture: </p>
+                                <img src="{{ photoUrl }}" alt="" class="center-block img-circle img-responsive">
+                                <a href="#" class="btn btn-info btn-xs change-profile">Change</a>
+                        </div>
+              		</div>
+              </div>
+          </div>
+
+
+
     </div>
-  </div>
   </div>
 </div>
