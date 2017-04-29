@@ -8,6 +8,8 @@ class HomeController {
              .then((template) => {
                $('#main-content').html(template);
              });
+
+    console.log(firebase.auth().currentUser);
   }
 }
 

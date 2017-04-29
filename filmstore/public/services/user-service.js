@@ -60,6 +60,16 @@ class UserService {
     return changeEmail;
   }
 
+  changeProfilePicture(pictureUrl) {
+    let currentUser = firebase.auth().currentUser;
+
+    let changeProfilePicture = currentUser.updateProfile({
+      photoURL: pictureUrl
+    });
+
+    return changeProfilePicture;
+  }
+
   getCurrentUser() {
     const user = firebase.auth().currentUser;
 

@@ -26,9 +26,11 @@ let app = $.sammy('#main-content', function() {
   this.post('#/add-movie-from-imdb', moviesController.addMovieFromIMDB);
 
   this.get('#/profile/changeEmail', userController.loadChangeEmailPage);
+  this.get('#/profile/change-profile-picture', userController.loadChangeProfilePicturePage);
   this.get('#/profile/:username', userController.loadProfilePage);
 
   this.post('#/profile/changeEmail', userController.changeEmail);
+  this.post('#/profile/change-profile-picture', userController.changeProfilePicture);
 
   this.get('#/searcher', searchController.loadSearchPage);
 

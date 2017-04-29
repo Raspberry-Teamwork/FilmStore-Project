@@ -39,6 +39,13 @@ class UserController {
              });
   }
 
+  loadChangeProfilePicturePage() {
+    requester.get('./views/change-profile-picture-page.html', 'text/html')
+            .then((template) => {
+              $('#main-content').html(template);
+            });
+  }
+
   showAccount(user) {
     let span  = $('.account .email'),
         profileLink = '#/profile/' + user.displayName;
@@ -92,6 +99,19 @@ class UserController {
                .catch(function(error) {
                  toastr.error(error.message);
                });
+  }
+
+  changeProfilePicture() {
+    let pictureUrl = $('#changeProfilePicture').val();
+
+    userService.changeProfilePicture(pictureUrl)
+               .then(() => {
+                 toastr.success('The profile picture is successfully changed.');
+               })
+               .catch((error) => {
+                toastr.error(error.message);
+               });
+
   }
 
   onAuthStateChanged(callback) {
