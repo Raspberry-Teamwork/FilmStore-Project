@@ -5,23 +5,28 @@ class UserController {
   constructor() {}
 
   loadSignUpPage() {
-    requester.get('./views/signup-page-template.html', 'text/html')
+    let signInPagePath = './views/signup-page-template.html';
+
+    requester.get(signInPagePath, 'text/html')
              .then((template) => {
                $('#main-content').html(template);
              });
   }
 
   loadSignInPage() {
-    requester.get('./views/signin-page.html', 'text/html')
+    let signUpPagePath = './views/signin-page.html';
+
+    requester.get(signUpPagePath, 'text/html')
              .then((template) => {
                $('#main-content').html(template);
              });
   }
 
   loadProfilePage() {
-    let compile;
+    let compile,
+        profilePagePath = './views/profile-page.html';
 
-    requester.get('./views/profile-page.html', 'text/html')
+    requester.get(profilePagePath, 'text/html')
              .then((template) => {
                userService.getCurrentUser()
                           .then((user) => {
@@ -33,17 +38,32 @@ class UserController {
   }
 
   loadChangeEmailPage() {
-    requester.get('./views/change-email-page.html', 'text/html')
+    let changeEmailPagePath = './views/change-profile-views/change-email-page.html';
+
+    requester.get(changeEmailPagePath, 'text/html')
              .then((template) => {
                $('#main-content').html(template);
              });
   }
 
   loadChangeProfilePicturePage() {
-    requester.get('./views/change-profile-picture-page.html', 'text/html')
+    let changeProfilePicturePath = './views/change-profile-views/change-profile-picture-page.html';
+
+    requester.get(changeProfilePicturePath, 'text/html')
             .then((template) => {
               $('#main-content').html(template);
             });
+  }
+
+  loadChangeUsernamePage() {
+    let changeUsernamePagePath = './views/change-profile-views/change-username-page.html';
+
+    requester.get(changeUsernamePagePath, 'text/html')
+             .then((template) => {
+
+               console.log('asdasdasd');
+               $('#main-content').html(template);
+             });
   }
 
   showAccount(user) {

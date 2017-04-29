@@ -27,6 +27,7 @@ let app = $.sammy('#main-content', function() {
 
   this.get('#/profile/changeEmail', userController.loadChangeEmailPage);
   this.get('#/profile/change-profile-picture', userController.loadChangeProfilePicturePage);
+  this.get('#/profile/change-username', userController.loadChangeUsernamePage);
   this.get('#/profile/:username', userController.loadProfilePage);
 
   this.post('#/profile/changeEmail', userController.changeEmail);

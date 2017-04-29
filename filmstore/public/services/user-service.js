@@ -61,11 +61,13 @@ class UserService {
   }
 
   changeProfilePicture(pictureUrl) {
-    let currentUser = firebase.auth().currentUser;
+    let currentUser = this.getCurrentUser();
 
-    let changeProfilePicture = currentUser.updateProfile({
-      photoURL: pictureUrl
-    });
+    let changeProfilePicture = currentUser.then((user) => {
+                                             user.updateProfile({
+                                               photoURL: pictureUrl
+                                             });
+                                           });
 
     return changeProfilePicture;
   }
