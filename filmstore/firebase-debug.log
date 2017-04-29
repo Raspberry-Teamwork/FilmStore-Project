@@ -3,7 +3,7 @@
 [debug] CLI Version:  3.6.0
 [debug] Platform:     win32
 [debug] Node Version: v6.9.2
-[debug] Time:         Wed Apr 26 2017 21:24:34 GMT-0200 (UTC-02)
+[debug] Time:         Fri Apr 28 2017 23:01:27 GMT-0200 (UTC-02)
 [debug] ----------------------------------------------------------------------
 [debug] 
 [debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
@@ -13,33 +13,32 @@
   client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
   grant_type: 'refresh_token',
   scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Wed Apr 26 2017 21:24:34 GMT-0200 (UTC-02)
+ Fri Apr 28 2017 23:01:27 GMT-0200 (UTC-02)
 [debug] <<< HTTP RESPONSE 200
 [debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/filmstore-92789  
- Wed Apr 26 2017 21:24:34 GMT-0200 (UTC-02)
+ Fri Apr 28 2017 23:01:27 GMT-0200 (UTC-02)
 [debug] <<< HTTP RESPONSE 200
 [debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/filmstore-92789/tokens  
- Wed Apr 26 2017 21:24:35 GMT-0200 (UTC-02)
+ Fri Apr 28 2017 23:01:28 GMT-0200 (UTC-02)
 [debug] <<< HTTP RESPONSE 200
 [info] Starting Firebase development server...
 [info] 
 [info] Project Directory: C:\Users\Dimitar\Desktop\FilmStore - CoursePoject\MovieStore-Project\filmstore
 [debug] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/filmstore-92789  
- Wed Apr 26 2017 21:24:36 GMT-0200 (UTC-02)
+ Fri Apr 28 2017 23:01:29 GMT-0200 (UTC-02)
 [debug] <<< HTTP RESPONSE 200
 [debug] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/584846956462/clients/_:getWebAppConfig  
- Wed Apr 26 2017 21:24:37 GMT-0200 (UTC-02)
+ Fri Apr 28 2017 23:01:30 GMT-0200 (UTC-02)
 [debug] <<< HTTP RESPONSE 200
 [info] Public Directory: public
 [info] 
 [info] Server listening at: http://localhost:5000
-[info] Shutting down...
 [debug] ----------------------------------------------------------------------
 [debug] Command:      D:\Developer\NodeJS\node.exe C:\Users\Dimitar\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
 [debug] CLI Version:  3.6.0
 [debug] Platform:     win32
 [debug] Node Version: v6.9.2
-[debug] Time:         Thu Apr 27 2017 14:00:12 GMT-0200 (UTC-02)
+[debug] Time:         Sat Apr 29 2017 13:13:06 GMT-0200 (UTC-02)
 [debug] ----------------------------------------------------------------------
 [debug] 
 [debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
@@ -49,130 +48,22 @@
   client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
   grant_type: 'refresh_token',
   scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Thu Apr 27 2017 14:00:12 GMT-0200 (UTC-02)
+ Sat Apr 29 2017 13:13:06 GMT-0200 (UTC-02)
 [debug] <<< HTTP RESPONSE 200
 [debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/filmstore-92789  
- Thu Apr 27 2017 14:00:12 GMT-0200 (UTC-02)
+ Sat Apr 29 2017 13:13:06 GMT-0200 (UTC-02)
 [debug] <<< HTTP RESPONSE 200
 [debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/filmstore-92789/tokens  
- Thu Apr 27 2017 14:00:13 GMT-0200 (UTC-02)
+ Sat Apr 29 2017 13:13:07 GMT-0200 (UTC-02)
 [debug] <<< HTTP RESPONSE 200
 [info] Starting Firebase development server...
 [info] 
 [info] Project Directory: C:\Users\Dimitar\Desktop\FilmStore - CoursePoject\MovieStore-Project\filmstore
 [debug] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/filmstore-92789  
- Thu Apr 27 2017 14:00:14 GMT-0200 (UTC-02)
+ Sat Apr 29 2017 13:13:08 GMT-0200 (UTC-02)
 [debug] <<< HTTP RESPONSE 200
 [debug] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/584846956462/clients/_:getWebAppConfig  
- Thu Apr 27 2017 14:00:15 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[info] Public Directory: public
-[info] 
-[info] Server listening at: http://localhost:5000
-[info] Shutting down...
-[debug] ----------------------------------------------------------------------
-[debug] Command:      D:\Developer\NodeJS\node.exe C:\Users\Dimitar\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] CLI Version:  3.6.0
-[debug] Platform:     win32
-[debug] Node Version: v6.9.2
-[debug] Time:         Thu Apr 27 2017 18:08:21 GMT-0200 (UTC-02)
-[debug] ----------------------------------------------------------------------
-[debug] 
-[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/_uYknhDVO7FBilt9nd0uJX-_-kS5NdPZNkE5uXzqO-s',
-  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
-  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
-  grant_type: 'refresh_token',
-  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Thu Apr 27 2017 18:08:21 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/filmstore-92789  
- Thu Apr 27 2017 18:08:21 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/filmstore-92789/tokens  
- Thu Apr 27 2017 18:08:22 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[info] Starting Firebase development server...
-[info] 
-[info] Project Directory: C:\Users\Dimitar\Desktop\FilmStore - CoursePoject\MovieStore-Project\filmstore
-[debug] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/filmstore-92789  
- Thu Apr 27 2017 18:08:23 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[debug] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/584846956462/clients/_:getWebAppConfig  
- Thu Apr 27 2017 18:08:24 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[info] Public Directory: public
-[info] 
-[info] Server listening at: http://localhost:5000
-[info] Shutting down...
-[debug] ----------------------------------------------------------------------
-[debug] Command:      D:\Developer\NodeJS\node.exe C:\Users\Dimitar\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] CLI Version:  3.6.0
-[debug] Platform:     win32
-[debug] Node Version: v6.9.2
-[debug] Time:         Fri Apr 28 2017 15:59:59 GMT-0200 (UTC-02)
-[debug] ----------------------------------------------------------------------
-[debug] 
-[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/_uYknhDVO7FBilt9nd0uJX-_-kS5NdPZNkE5uXzqO-s',
-  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
-  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
-  grant_type: 'refresh_token',
-  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Fri Apr 28 2017 15:59:59 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/filmstore-92789  
- Fri Apr 28 2017 15:59:59 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/filmstore-92789/tokens  
- Fri Apr 28 2017 16:00:00 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[info] Starting Firebase development server...
-[info] 
-[info] Project Directory: C:\Users\Dimitar\Desktop\FilmStore - CoursePoject\MovieStore-Project\filmstore
-[debug] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/filmstore-92789  
- Fri Apr 28 2017 16:00:01 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[debug] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/584846956462/clients/_:getWebAppConfig  
- Fri Apr 28 2017 16:00:02 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[info] Public Directory: public
-[info] 
-[info] Server listening at: http://localhost:5000
-[info] Shutting down...
-[debug] ----------------------------------------------------------------------
-[debug] Command:      D:\Developer\NodeJS\node.exe C:\Users\Dimitar\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] CLI Version:  3.6.0
-[debug] Platform:     win32
-[debug] Node Version: v6.9.2
-[debug] Time:         Fri Apr 28 2017 19:32:16 GMT-0200 (UTC-02)
-[debug] ----------------------------------------------------------------------
-[debug] 
-[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/_uYknhDVO7FBilt9nd0uJX-_-kS5NdPZNkE5uXzqO-s',
-  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
-  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
-  grant_type: 'refresh_token',
-  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Fri Apr 28 2017 19:32:16 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/filmstore-92789  
- Fri Apr 28 2017 19:32:16 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/filmstore-92789/tokens  
- Fri Apr 28 2017 19:32:17 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[info] Starting Firebase development server...
-[info] 
-[info] Project Directory: C:\Users\Dimitar\Desktop\FilmStore - CoursePoject\MovieStore-Project\filmstore
-[debug] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/filmstore-92789  
- Fri Apr 28 2017 19:32:18 GMT-0200 (UTC-02)
-[debug] <<< HTTP RESPONSE 200
-[debug] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/584846956462/clients/_:getWebAppConfig  
- Fri Apr 28 2017 19:32:19 GMT-0200 (UTC-02)
+ Sat Apr 29 2017 13:13:09 GMT-0200 (UTC-02)
 [debug] <<< HTTP RESPONSE 200
 [info] Public Directory: public
 [info] 

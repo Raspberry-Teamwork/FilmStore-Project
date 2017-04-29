@@ -34,6 +34,32 @@ class UserService {
                    .signInWithEmailAndPassword(email, password);
   }
 
+  changeEmail(newEmail, password) {
+    let currentUser = firebase.auth().currentUser,
+        credential = firebase.auth.EmailAuthProvider.credential(
+          currentUser.email,
+          password
+        ),
+        hanledErrorMessage,
+        hanldedError = {};
+
+    let changeEmail = currentUser.reauthenticateWithCredential(credential)
+                      .then(() => {
+                        return currentUser.updateEmail(newEmail)
+                          .catch((error) => {
+                            hanledErrorMessage = errorHandler.handleFirebaseErrors(error);
+
+                            hanldedError = {
+                              message: hanledErrorMessage
+                            };
+
+                            return Promise.reject(hanldedError);
+                          });
+                      });
+
+    return changeEmail;
+  }
+
   getCurrentUser() {
     const user = firebase.auth().currentUser;
 

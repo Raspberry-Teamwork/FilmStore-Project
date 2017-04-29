@@ -32,6 +32,13 @@ class UserController {
              });
   }
 
+  loadChangeEmailPage() {
+    requester.get('./views/change-email-page.html', 'text/html')
+             .then((template) => {
+               $('#main-content').html(template);
+             });
+  }
+
   showAccount(user) {
     let span  = $('.account .email'),
         profileLink = '#/profile/' + user.displayName;
@@ -72,6 +79,19 @@ class UserController {
 
   signOut() {
     userService.signOut();
+  }
+
+  changeEmail() {
+    let newEmail = $('#changeEmail').val(),
+        password = $('#password').val();
+
+    userService.changeEmail(newEmail, password)
+               .then(function() {
+                 toastr.success('The email is changed to : ' + newEmail)
+               })
+               .catch(function(error) {
+                 toastr.error(error.message);
+               });
   }
 
   onAuthStateChanged(callback) {
