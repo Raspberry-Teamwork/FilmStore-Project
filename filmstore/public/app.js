@@ -2,6 +2,7 @@ import { homeController } from './controllers/home-controller.js';
 import { userController } from './controllers/user-controller.js';
 import { notFoundController } from './controllers/notFound-controller.js';
 import { moviesController } from './controllers/movies-controller.js';
+import { genresController } from './controllers/genres-controller.js';
 
 let app = $.sammy('#main-content', function() {
 
@@ -20,9 +21,9 @@ let app = $.sammy('#main-content', function() {
 
   this.get('#/add-movie', moviesController.loadAddMoviePage);
   this.get('#/add-movie-from-imdb', moviesController.loadAddMovieFromIMDBPage);
+  this.get('#/genres/:genre',genresController.loadGenreMovie);
 
   this.post('#/add-movie', moviesController.addMovie);
-
   this.notFound = function() {
     notFoundController.loadNotFoundPage();
   };

@@ -7,8 +7,8 @@ function convertObjectToArray(obj) {
       if (obj.hasOwnProperty(key)) {
         arr.push(obj[key]);
       }
-    };
-    
+    }
+
     return arr;
 }
 
@@ -23,7 +23,7 @@ const ERROR_MESSAGE = {
   WRONG_RUNTIME_LENGTH: "The runtime must be between 5 and 10 charactors long.",
 
   WRONG_IMG_URL: 'Wrong img url. It must begin with http or https.'
-}
+};
 
 class MoviesService {
   constructor() {}
@@ -78,6 +78,7 @@ class MoviesService {
     return promise;
   }
 
+
   addMovie(movie) {
     try {
       validator.isEmpty(movie.Title, ERROR_MESSAGE.EMPTY_TITLE);
@@ -106,4 +107,4 @@ class MoviesService {
 
 const moviesService = new MoviesService();
 
-export { moviesService };
+export { moviesService, convertObjectToArray };

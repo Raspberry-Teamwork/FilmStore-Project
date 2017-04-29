@@ -13,7 +13,6 @@ class MoviesController {
                moviesService.getAllMovies()
                             .then((movies) => {
                               compile = Handlebars.compile(template);
-
                               $('#main-content').html(compile(movies));
                             });
              });
@@ -25,13 +24,11 @@ class MoviesController {
         compile;
 
     console.log(title);
-
     requester.get('./views/templates/current-movie-template.handlebars')
              .then((template) => {
                moviesService.getMovieByTitle(title)
                             .then((movie) => {
                               compile = Handlebars.compile(template);
-
                               $('#main-content').html(compile(movie));
                             })
                             .catch(console.log);
@@ -59,16 +56,16 @@ class MoviesController {
           runtime = $('.runtime').val(),
           released = $('.released').val(),
           imgUrl = $('.img-url').val();
+          genre = $('.genre').val().split(',');
 
-    let movie;
-
-   movie = {
+    let movie = {
      Title: title,
      Year: year,
      Plot: description,
      Released: released,
      Poster: imgUrl,
-     Runtime: runtime
+     Runtime: runtime,
+     Genre:genre
    };
 
    moviesService.addMovie(movie)
