@@ -72,6 +72,28 @@ class UserService {
     return changeProfilePicture;
   }
 
+  changeUsername(newUsername) {
+    try {
+
+      validator.isEmpty(newUsername, "The username can't be empty.");
+      validator.isBetween(newUsername, 5, 25, "The username must be between 5 and 25 characters long.");
+
+    } catch(error) {
+      return Promise.reject({ message: error.message });
+    }
+
+   let currentUser = this.getCurrentUser();
+
+   let changeUsername = currentUser.then((user) => {
+                                       user.updateProfile({
+                                         displayName: newUsername
+                                       });
+                                   });
+
+    return changeUsername;
+  }
+
+
   getCurrentUser() {
     const user = firebase.auth().currentUser;
 

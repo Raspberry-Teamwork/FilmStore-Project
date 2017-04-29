@@ -134,6 +134,18 @@ class UserController {
 
   }
 
+  changeUsername() {
+    let newUsername = $('#changeUsername').val();
+
+    userService.changeUsername(newUsername)
+               .then(() => {
+                  toastr.success('Your username is successfully changed.');
+               })
+               .catch((error) => {
+                 toastr.error(error.message);
+               });
+  }
+
   onAuthStateChanged(callback) {
     userService.onAuthStateChanged(callback);
   }
