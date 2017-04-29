@@ -25,14 +25,16 @@ let app = $.sammy('#main-content', function() {
   this.post('#/add-movie', moviesController.addMovie);
   this.post('#/add-movie-from-imdb', moviesController.addMovieFromIMDB);
 
-  this.get('#/profile/changeEmail', userController.loadChangeEmailPage);
+  this.get('#/profile/change-email', userController.loadChangeEmailPage);
   this.get('#/profile/change-profile-picture', userController.loadChangeProfilePicturePage);
   this.get('#/profile/change-username', userController.loadChangeUsernamePage);
+  this.get('#/profile/change-password', userController.loadChangePasswordPage);
   this.get('#/profile/:username', userController.loadProfilePage);
 
   this.post('#/profile/changeEmail', userController.changeEmail);
   this.post('#/profile/change-username', userController.changeUsername);
   this.post('#/profile/change-profile-picture', userController.changeProfilePicture);
+  this.post('#/profile/change-password', userController.changePassword);
 
   this.get('#/searcher', searchController.loadSearchPage);
 

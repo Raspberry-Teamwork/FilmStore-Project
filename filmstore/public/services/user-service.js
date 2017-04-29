@@ -60,6 +60,29 @@ class UserService {
     return changeEmail;
   }
 
+  changePassword(newPassword, currentPassword) {
+    try {
+      validator.isEmpty(newPassword, "The new password can't be empty.");
+      validator.isBetween(newPassword, 5, 25, "The new password must be between 5 and 25 character long.");
+    } catch(error) {
+      return Promise.reject({ message: error.message });
+    }
+
+
+    let currentUser = firebase.auth().currentUser,
+        credentials = firebase.auth.EmailAuthProvider.credential  (
+          currentUser.email,
+          currentPassword
+        );
+
+    let changePassword = currentUser.reauthenticateWithCredential(credentials)
+                                   .then(() => {
+                                     return currentUser.updatePassword(newPassword);
+                                   });
+
+    return changePassword;
+  }
+
   changeProfilePicture(pictureUrl) {
     let currentUser = this.getCurrentUser();
 
@@ -74,10 +97,8 @@ class UserService {
 
   changeUsername(newUsername) {
     try {
-
       validator.isEmpty(newUsername, "The username can't be empty.");
       validator.isBetween(newUsername, 5, 25, "The username must be between 5 and 25 characters long.");
-
     } catch(error) {
       return Promise.reject({ message: error.message });
     }
@@ -105,8 +126,8 @@ class UserService {
   }
 
   signOut() {
-    firebase.auth()
-            .signOut();
+    return firebase.auth()
+                   .signOut();
   }
 }
 

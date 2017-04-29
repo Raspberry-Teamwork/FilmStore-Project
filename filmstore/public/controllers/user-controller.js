@@ -60,8 +60,15 @@ class UserController {
 
     requester.get(changeUsernamePagePath, 'text/html')
              .then((template) => {
+               $('#main-content').html(template);
+             });
+  }
 
-               console.log('asdasdasd');
+  loadChangePasswordPage() {
+    let changePasswordPagePath = './views/change-profile-views/change-password-page.html';
+
+    requester.get(changePasswordPagePath, 'text/html')
+             .then((template) => {
                $('#main-content').html(template);
              });
   }
@@ -104,8 +111,11 @@ class UserController {
 
   }
 
-  signOut() {
-    userService.signOut();
+  signOut(sammy) {
+    userService.signOut()
+               .then(() => {
+                 sammy.redirect('#/home');
+               });
   }
 
   changeEmail() {
@@ -140,6 +150,19 @@ class UserController {
     userService.changeUsername(newUsername)
                .then(() => {
                   toastr.success('Your username is successfully changed.');
+               })
+               .catch((error) => {
+                 toastr.error(error.message);
+               });
+  }
+
+  changePassword() {
+    let newPassword = $('#changePassword').val(),
+        currentPassword = $('#currentPassword').val();
+
+    userService.changePassword(newPassword, currentPassword)
+               .then(() => {
+                 toastr.success('The password is changed successfully.');
                })
                .catch((error) => {
                  toastr.error(error.message);
