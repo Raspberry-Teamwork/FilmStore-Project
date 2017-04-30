@@ -111,6 +111,10 @@ class UserController {
 
   }
 
+  signInWithFacebook() {
+   userService.signInWithFacebook();
+  }
+
   signOut(sammy) {
     userService.signOut()
                .then(() => {

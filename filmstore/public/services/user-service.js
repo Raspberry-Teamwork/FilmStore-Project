@@ -34,6 +34,18 @@ class UserService {
                    .signInWithEmailAndPassword(email, password);
   }
 
+  signInWithFacebook() {
+    let facebookProvider = new firebase.auth.FacebookAuthProvider();
+
+    firebase.auth().signInWithPopup(facebookProvider)
+            .then((result) => {
+              console.log(user);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+  }
+
   changeEmail(newEmail, password) {
     let currentUser = firebase.auth().currentUser,
         credential = firebase.auth.EmailAuthProvider.credential(

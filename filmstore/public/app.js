@@ -10,6 +10,7 @@ let app = $.sammy('#main-content', function() {
 
   this.get('#/signup', userController.loadSignUpPage);
   this.get('#/signin', userController.loadSignInPage);
+  this.get('#/signin-with-facebook', userController.signInWithFacebook);
 
   this.get('#/signout', userController.signOut);
 

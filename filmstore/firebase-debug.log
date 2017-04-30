@@ -416,3 +416,39 @@
 [info] 
 [info] Server listening at: http://localhost:5000
 [info] Shutting down...
+[debug] ----------------------------------------------------------------------
+[debug] Command:      D:\Developer\NodeJS\node.exe C:\Users\Dimitar\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] CLI Version:  3.6.0
+[debug] Platform:     win32
+[debug] Node Version: v6.9.2
+[debug] Time:         Sat Apr 29 2017 23:41:26 GMT-0200 (UTC-02)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/_uYknhDVO7FBilt9nd0uJX-_-kS5NdPZNkE5uXzqO-s',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Apr 29 2017 23:41:26 GMT-0200 (UTC-02)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/filmstore-92789  
+ Sat Apr 29 2017 23:41:26 GMT-0200 (UTC-02)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/filmstore-92789/tokens  
+ Sat Apr 29 2017 23:41:27 GMT-0200 (UTC-02)
+[debug] <<< HTTP RESPONSE 200
+[info] Starting Firebase development server...
+[info] 
+[info] Project Directory: C:\Users\Dimitar\Desktop\FilmStore - CoursePoject\MovieStore-Project\filmstore
+[debug] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/filmstore-92789  
+ Sat Apr 29 2017 23:41:28 GMT-0200 (UTC-02)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/584846956462/clients/_:getWebAppConfig  
+ Sat Apr 29 2017 23:41:29 GMT-0200 (UTC-02)
+[debug] <<< HTTP RESPONSE 200
+[info] Public Directory: public
+[info] 
+[info] Server listening at: http://localhost:5000
+[info] Shutting down...
