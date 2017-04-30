@@ -1,5 +1,5 @@
 /public/node_modules
 /functions
 /npm-debug.log
-
 /bower_components
+./firebase-debug.log
