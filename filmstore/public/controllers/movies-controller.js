@@ -60,6 +60,7 @@ class MoviesController {
           released = $('.released').val(),
           imgUrl = $('.img-url').val(),
           actors = $('.actors').val(),
+          genres = $('.genres').val(),
           trailerUrl = $('.trailer-url').val();
 
     let movie;
@@ -68,6 +69,7 @@ class MoviesController {
      Actors: actors,
      Title: title,
      Year: year,
+     Genres: genres,
      Plot: description,
      Released: released,
      Poster: imgUrl,
