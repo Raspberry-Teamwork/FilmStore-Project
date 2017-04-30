@@ -1,15 +1,14 @@
+
 import { homeController } from './controllers/home-controller.js';
 import { userController } from './controllers/user-controller.js';
 import { notFoundController } from './controllers/notFound-controller.js';
 import { moviesController } from './controllers/movies-controller.js';
-<<<<<<< HEAD
 import { genresController } from './controllers/genres-controller.js';
 import { menugenerator } from './controllers/genres-menu-controller.js';
 $( document ).ready(menugenerator.loadMenuWithTheAllGenres);
 
-=======
 import { searchController } from './controllers/search-controller.js';
->>>>>>> origin/master
+
 
 let app = $.sammy('#main-content', function() {
 
@@ -33,8 +32,6 @@ let app = $.sammy('#main-content', function() {
 
   this.get('#/genres/:genre',genresController.loadGenreMovie);
 
-<<<<<<< HEAD
-=======
   this.post('#/add-movie', moviesController.addMovie);
   this.post('#/add-movie-from-imdb', moviesController.addMovieFromIMDB);
 
@@ -51,7 +48,6 @@ let app = $.sammy('#main-content', function() {
 
   this.get('#/searcher', searchController.loadSearchPage);
   this.get('#/search-movie', searchController.search);
->>>>>>> origin/master
 
   this.post('#/add-movie', moviesController.addMovie);
   this.notFound = function() {
