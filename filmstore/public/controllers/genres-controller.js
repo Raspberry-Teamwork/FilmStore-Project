@@ -11,7 +11,7 @@ class GenresController {
         compile;
 
     console.log(title);
-     requester.get('./views/templates/current-movie-template.handlebars')
+     requester.get('./views/templates/genres-movie-template.handlebars')
              .then((template) => {
                genreService.getMovieByGenres(title)
                             .then((movies) => {

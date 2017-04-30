@@ -1,6 +1,10 @@
 import {
     convertObjectToArray
 } from 'movies-service';
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
 class GenreService {
 
     constructor() {}
@@ -11,50 +15,51 @@ class GenreService {
             let movie,
                 movies,
                 moviesLength,
-                moviesWithGenres,
+                moviesWithGenres=[],
                 currentMovie,
-                genLen = genres.length;
-                if(typeof(genres)!==Array){
-                    let old=genres;
-                    genres=[];
-                    genres.push(old);
-                    console.log(genres);
-                }
+                genresArr=genres.split(','),
+                genLen = genresArr.length;
+
 
             database.on('value', function (snapshot) {
+                let movieProp=(snapshot.val()[0].Genre.split(','));
                 movies = snapshot.val();
-
-                if (typeof movies === typeof {}) {
-                    movies = convertObjectToArray(movies);
-                }
 
                 for (let i = 0, len = movies.length; i < len; i += 1) {
                     currentMovie = movies[i];
-                    let currentMovieGenres=currentMovie.Genre.toLowerCase().spit(',');
-                        console.log(`HERE -->${currentMovieGenres}`);
-                    // console.log(currentMovie.Genre);
-                    if (genLen === 1) {
-
-                         if (currentMovie.genre===genre) {
+                    let currentMovieGenres=currentMovie.Genre.split(',');
+                    currentMovieGenres.forEach(function(element) {
+                    if (genres.toLowerCase()===element.toLowerCase()) {
                                  moviesWithGenres.push(currentMovie);
-                                }else{
-                                    console.log('In but not true');
-                                }
-
-                    } else {
-                        genres.forEach((genre)=>{
-                                //  console.log(`Current movie-${currentMovie} and genre: ${genre}`);
-
-                             if (currentMovie.genre===genre) {
-                                 moviesWithGenres.push(currentMovie);
-                    }}, this);
-                    }
+                        }
+                    }, this);
                 }
+                console.log(moviesWithGenres);
                 resolve(moviesWithGenres);
             });
         });
         return promise;
     }
+    getAllGenres() {
+    const promise = new Promise((resolve, reject) => {
+      const database = firebase.database().ref('/genres/');
+      let genres = [];
+        database.on('value', function(snapshot) {
+          genres = snapshot.val();
+          let genreskeys=Object.keys(genres);
+
+            for (var i = 0,len=genreskeys.length; i < len; i+=1) {
+                genreskeys[i]=toTitleCase(genreskeys[i]);
+            }
+
+          let myobject={};
+          myobject.genres=genreskeys;
+          resolve(myobject);
+        });
+    });
+
+    return promise;
+  }
 }
 const genreService = new GenreService();
 

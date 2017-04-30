@@ -3,6 +3,9 @@ import { userController } from './controllers/user-controller.js';
 import { notFoundController } from './controllers/notFound-controller.js';
 import { moviesController } from './controllers/movies-controller.js';
 import { genresController } from './controllers/genres-controller.js';
+import { menugenerator } from './controllers/genres-menu-controller.js';
+$( document ).ready(menugenerator.loadMenuWithTheAllGenres);
+
 
 let app = $.sammy('#main-content', function() {
 
@@ -21,7 +24,10 @@ let app = $.sammy('#main-content', function() {
 
   this.get('#/add-movie', moviesController.loadAddMoviePage);
   this.get('#/add-movie-from-imdb', moviesController.loadAddMovieFromIMDBPage);
+  this.any(menugenerator.loadMenuWithTheAllGenres);
+
   this.get('#/genres/:genre',genresController.loadGenreMovie);
+
 
   this.post('#/add-movie', moviesController.addMovie);
   this.notFound = function() {
@@ -31,7 +37,6 @@ let app = $.sammy('#main-content', function() {
 });
 
 app.run('#/home');
-
 userController.onAuthStateChanged(function(user) {
   if (user) {
     $('.browse').removeClass('invisible');

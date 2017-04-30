@@ -39,7 +39,6 @@ class MoviesService {
           if (typeof movies === typeof {}) {
            movies = convertObjectToArray(movies);
           }
-
           resolve(movies);
         });
     });
