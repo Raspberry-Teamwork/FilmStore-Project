@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="./config/facebook-sdk-config.js"></script>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./style/style.css">
     <link rel="stylesheet" href="./node_modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="./node_modules/please-wait/build/please-wait.css">
     </head>
   <body>
     <div class="navbar navbar-default">
@@ -36,15 +40,15 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/searcher"><i class="glyphicon glyphicon-search"></a></i></li>
             <li class="dropdown account">
               <a class="dropdown-toggle email" data-toggle="dropdown" href="#"  ></a>
               <ul class="dropdown-menu" aria-labelledby="themes">
-                <li><a href="#/pofile">Profile</a></li>
+                <li><a id="profile" href="#">Profile</a></li>
                 <li class="divider"></li>
                 <li><a href="#/signout">Sign out</a></li>
               </ul>
             </li>
-              <li style="margin-top: 20px; margin-right: 20px;"><i class="glyphicon glyphicon-search"></i></li>
             <button id="singin" class="btn btn-default" style="margin-top: 7px;"><a href="#/signin">Sign in</a></button>
             <li class="signup"><a href="#/signup" >Sign up</a></li>
           </ul>
@@ -63,6 +67,10 @@
       </div>
  </footer>
 
+
+
+  <script type="text/javascript" src="./node_modules/please-wait/build/please-wait.min.js"></script>
+  <script type="text/javascript" src="./style/loadingScreen.js"></script>
 
   <script src="./node_modules/jquery/dist/jquery.js"></script>
   <script src="./node_modules/firebase/firebase.js"></script>

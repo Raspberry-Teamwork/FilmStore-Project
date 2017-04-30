@@ -12,6 +12,8 @@ class MoviesController {
              .then((template) => {
                moviesService.getAllMovies()
                             .then((movies) => {
+                              loadingScreen.finish();
+
                               compile = Handlebars.compile(template);
                               $('#main-content').html(compile(movies));
                             });
@@ -28,6 +30,8 @@ class MoviesController {
              .then((template) => {
                moviesService.getMovieByTitle(title)
                             .then((movie) => {
+                              loadingScreen.finish();
+
                               compile = Handlebars.compile(template);
                               $('#main-content').html(compile(movie));
                             })
@@ -38,6 +42,8 @@ class MoviesController {
   loadAddMoviePage() {
     requester.get('./views/add-movie-page.html', 'text/html')
              .then((template) => {
+               loadingScreen.finish();
+
                 $('#main-content').html(template);
              });
   }
@@ -45,6 +51,8 @@ class MoviesController {
   loadAddMovieFromIMDBPage() {
     requester.get('./views/add-movie-from-IMDB.html')
              .then((template) => {
+               loadingScreen.finish();
+
                $('#main-content').html(template);
              });
   }
@@ -55,23 +63,66 @@ class MoviesController {
           description = $('.description').val(),
           runtime = $('.runtime').val(),
           released = $('.released').val(),
+<<<<<<< HEAD
           imgUrl = $('.img-url').val();
           genre = $('.genre').val().split(',');
 
     let movie = {
+=======
+          imgUrl = $('.img-url').val(),
+          actors = $('.actors').val(),
+          genres = $('.genres').val(),
+          trailerUrl = $('.trailer-url').val();
+
+    let movie;
+
+   movie = {
+     Actors: actors,
+>>>>>>> origin/master
      Title: title,
      Year: year,
+     Genres: genres,
      Plot: description,
      Released: released,
      Poster: imgUrl,
      Runtime: runtime,
+<<<<<<< HEAD
      Genre:genre
+=======
+     TrailerUrl: trailerUrl
+>>>>>>> origin/master
    };
 
    moviesService.addMovie(movie)
                 .catch((error) => {
                   toastr.error(error.message);
                 });
+  }
+
+  addMovieFromIMDB() {
+    let movieId = $('.imdbId').val();
+
+    if (movieId.length === 0) {
+      toastr.error('The imdb id can not be empty.');
+      return;
+    }
+
+    let movieURL = 'http://www.omdbapi.com/?i=' + movieId,
+        trailerUrl = $('.trailer-url').val();
+
+    requester.getFromOMDB(movieURL)
+            .then(movie => {
+
+               movie.TrailerUrl = trailerUrl;
+
+               moviesService.addMovieFromIMDB(movie)
+                            .then(() => {
+                              toastr.success('The movie is successfully added.');
+                            })
+                            .catch((error) => {
+                              toastr.error(error.message);
+                            });;
+            })
   }
 }
 

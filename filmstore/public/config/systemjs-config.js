@@ -10,7 +10,11 @@ SystemJS.config({
 
     'user-service': './../services/user-service.js',
     'movies-service': './../services/movies-service.js',
+<<<<<<< HEAD
     'genres-service': './../services/genres-service.js',
+=======
+    'search-service': './../services/search-service.js',
+>>>>>>> origin/master
 
     'validator': './../services/helpers/validator.js',
     'error-handler': './../services/helpers/error-handler.js'

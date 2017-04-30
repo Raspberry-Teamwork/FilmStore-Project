@@ -8,7 +8,6 @@ function convertObjectToArray(obj) {
         arr.push(obj[key]);
       }
     }
-
     return arr;
 }
 
@@ -21,6 +20,12 @@ const ERROR_MESSAGE = {
 
   EMPTY_RUNTIME: "The runtime field can't be empty",
   WRONG_RUNTIME_LENGTH: "The runtime must be between 5 and 10 charactors long.",
+
+  EMPTY_TRAILER_URL: "The trailer url field can't be empty.",
+  WRONG_TRAILER_VIDEO_URL: "The trailer url must be from youtube.com",
+
+  EMPTY_ACTORS: "The actors field can't be empty.",
+  WRONF_ACTORS_LENGTH: "Tha actors field must be between 5 and 100 character.",
 
   WRONG_IMG_URL: 'Wrong img url. It must begin with http or https.'
 };
@@ -80,6 +85,9 @@ class MoviesService {
 
   addMovie(movie) {
     try {
+      validator.isEmpty(movie.Actors, ERROR_MESSAGE.EMPTY_ACTORS);
+      validator.isBetween(movie.Actors, 5, 100, ERROR_MESSAGE.WRONF_ACTORS_LENGTH);
+
       validator.isEmpty(movie.Title, ERROR_MESSAGE.EMPTY_TITLE);
       validator.isBetween(movie.Title, 4, 40, ERROR_MESSAGE.WRONG_TITLE_LENGTH);
 
@@ -89,8 +97,28 @@ class MoviesService {
       validator.isEmpty(movie.Plot, ERROR_MESSAGE.EMPTY_PLOT);
       validator.isBetween(movie.Plot, 40, 500, ERROR_MESSAGE.WRONG_PLOT_LENGTH);
 
+      validator.isEmpty(movie.TrailerUrl, ERROR_MESSAGE.EMPTY_TRAILER_URL);
+      validator.validateUrl(movie.TrailerUrl, ERROR_MESSAGE.WRONG_TRAILER_VIDEO_URL);
+
       validator.validateUrl(movie.Poster, ERROR_MESSAGE.WRONG_IMG_URL);
     } catch(error) {
+      return Promise.reject({ message: error.message });
+    }
+
+    const database = firebase.database().ref('/movies');
+
+    return new Promise((resolve, reject) => {
+      database.push(movie);
+
+      resolve();
+    });
+  }
+
+
+  addMovieFromIMDB(movie) {
+    try {
+      validator.isEmpty(movie.TrailerUrl, "The trailer url can't be empty.");
+    } catch (error) {
       return Promise.reject({ message: error.message });
     }
 
