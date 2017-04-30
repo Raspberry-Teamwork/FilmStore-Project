@@ -38,6 +38,7 @@ let app = $.sammy('#main-content', function() {
   this.post('#/profile/change-password', userController.changePassword);
 
   this.get('#/searcher', searchController.loadSearchPage);
+  this.get('#/search-movie', searchController.search);
 
   this.notFound = function() {
     notFoundController.loadNotFoundPage();
