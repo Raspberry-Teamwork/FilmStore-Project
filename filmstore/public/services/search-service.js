@@ -17,6 +17,10 @@ class Searcher {
                 }
               });
 
+              if (foundMovies.length === 0) {
+                return reject({ message: 'The movie is not found.' });
+              }
+
               resolve(foundMovies);
             });
     });
