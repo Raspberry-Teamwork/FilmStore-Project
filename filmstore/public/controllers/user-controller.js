@@ -9,6 +9,8 @@ class UserController {
 
     requester.get(signInPagePath, 'text/html')
              .then((template) => {
+               loadingScreen.finish();
+
                $('#main-content').html(template);
              });
   }
@@ -18,6 +20,8 @@ class UserController {
 
     requester.get(signUpPagePath, 'text/html')
              .then((template) => {
+               loadingScreen.finish();
+
                $('#main-content').html(template);
              });
   }
@@ -30,6 +34,8 @@ class UserController {
              .then((template) => {
                userService.getCurrentUser()
                           .then((user) => {
+                            loadingScreen.finish();
+
                             compile = Handlebars.compile(template);
 
                             $('#main-content').html(compile(user));
@@ -42,6 +48,8 @@ class UserController {
 
     requester.get(changeEmailPagePath, 'text/html')
              .then((template) => {
+               loadingScreen.finish();
+
                $('#main-content').html(template);
              });
   }
@@ -51,6 +59,8 @@ class UserController {
 
     requester.get(changeProfilePicturePath, 'text/html')
             .then((template) => {
+              loadingScreen.finish();
+
               $('#main-content').html(template);
             });
   }
@@ -60,6 +70,8 @@ class UserController {
 
     requester.get(changeUsernamePagePath, 'text/html')
              .then((template) => {
+               loadingScreen.finish();
+
                $('#main-content').html(template);
              });
   }
@@ -69,6 +81,8 @@ class UserController {
 
     requester.get(changePasswordPagePath, 'text/html')
              .then((template) => {
+               loadingScreen.finish();
+               
                $('#main-content').html(template);
              });
   }

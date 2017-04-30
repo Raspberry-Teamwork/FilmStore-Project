@@ -7,6 +7,8 @@ class Search {
   loadSearchPage() {
     requester.get('./views/search-page.html', 'text/html')
              .then((template) => {
+               loadingScreen.finish();
+
                $('#main-content').html(template);
              });
   }

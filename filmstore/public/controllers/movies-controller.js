@@ -12,6 +12,8 @@ class MoviesController {
              .then((template) => {
                moviesService.getAllMovies()
                             .then((movies) => {
+                              loadingScreen.finish();
+
                               compile = Handlebars.compile(template);
 
                               $('#main-content').html(compile(movies));
@@ -30,6 +32,8 @@ class MoviesController {
              .then((template) => {
                moviesService.getMovieByTitle(title)
                             .then((movie) => {
+                              loadingScreen.finish();
+
                               compile = Handlebars.compile(template);
 
                               $('#main-content').html(compile(movie));
@@ -41,6 +45,8 @@ class MoviesController {
   loadAddMoviePage() {
     requester.get('./views/add-movie-page.html', 'text/html')
              .then((template) => {
+               loadingScreen.finish();
+
                 $('#main-content').html(template);
              });
   }
@@ -48,6 +54,8 @@ class MoviesController {
   loadAddMovieFromIMDBPage() {
     requester.get('./views/add-movie-from-IMDB.html')
              .then((template) => {
+               loadingScreen.finish();
+               
                $('#main-content').html(template);
              });
   }
