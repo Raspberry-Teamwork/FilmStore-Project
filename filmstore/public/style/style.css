@@ -27,3 +27,11 @@ a {
 .change-profile {
   margin-top: 10px;
 }
+
+#signin-buttons {
+  margin-left: 120px;
+}
+
+#twitter {
+  margin-left: 100px;
+}

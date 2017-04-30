@@ -73,11 +73,22 @@ class UserService {
         credentials = firebase.auth.EmailAuthProvider.credential  (
           currentUser.email,
           currentPassword
-        );
+        ),
+        hanledErrorMessage,
+        hanldedError = {};
 
     let changePassword = currentUser.reauthenticateWithCredential(credentials)
                                    .then(() => {
-                                     return currentUser.updatePassword(newPassword);
+                                     return currentUser.updatePassword(newPassword)
+                                            .catch((error) => {
+                                              hanledErrorMessage = errorHandler.handleFirebaseErrors(error);
+
+                                              hanldedError = {
+                                                message: hanledErrorMessage
+                                              };
+
+                                              return Promise.reject(hanldedError);
+                                     });;
                                    });
 
     return changePassword;
