@@ -5,9 +5,14 @@
       <h2>{{ Title }}</h2>
       <div class="details">
         <h3>Actors : <p>{{ Actors }}</p></h3>
-        <h3>Release date : <p>{{ Released }}</h3>
-        <h3>Runtime : <p>{{ Runtime }}</h3>
+        <h3>Release date : <p>{{ Released }}</p></h3>
+        <h3>Runtime : <p>{{ Runtime }}</p></h3>
         <h3>Plot : <h4>{{ Plot }}</h4></h3>
+        <h3>Genres : <p>{{ Genre }}</p></h3>
+        <h3>Director : <p>{{#if Director}}{{ Director }}{{else}}Empty{{/if}}</p></h3>
+        <h3>IMDB Rating : <p>{{#if imdbRating}}{{ imdbRating }}{{else}}Empty{{/if}}</p></h3>
+        <h3>IMDB Votes : <p>{{#if imdbVotes}}{{ imdbVotes }}{{else}}Empty{{/if}}</p></h3>
+        <h3>IMDB Id : <p>{{#if imdbID}}{{ imdbID }}{{else}}Empty{{/if}}</p></h3>
       </div>
     </div>
     <div class=" pull-right image-container">

@@ -28,7 +28,9 @@ const ERROR_MESSAGE = {
   EMPTY_ACTORS: "The actors field can't be empty.",
   WRONF_ACTORS_LENGTH: "Tha actors field must be between 5 and 100 character.",
 
-  WRONG_IMG_URL: 'Wrong img url. It must begin with http or https.'
+  WRONG_IMG_URL: 'Wrong img url. It must begin with http or https.',
+
+  WRONG_IMDB_ID: "The given ID isn't found or it is incorrect."
 }
 
 class MoviesService {
@@ -99,9 +101,9 @@ class MoviesService {
       validator.isBetween(movie.Plot, 40, 500, ERROR_MESSAGE.WRONG_PLOT_LENGTH);
 
       validator.isEmpty(movie.TrailerUrl, ERROR_MESSAGE.EMPTY_TRAILER_URL);
-      validator.validateUrl(movie.TrailerUrl, ERROR_MESSAGE.WRONG_TRAILER_VIDEO_URL);
+      validator.validateUrl(movie.TrailerUrl, ERROR_MESSAGE.WRONG_TRAILER_VIDEO_URL, ['https', 'youtube']);
 
-      validator.validateUrl(movie.Poster, ERROR_MESSAGE.WRONG_IMG_URL);
+      validator.validateUrl(movie.Poster, ERROR_MESSAGE.WRONG_IMG_URL, ['http', 'https']);
     } catch(error) {
       return Promise.reject({ message: error.message });
     }
@@ -118,7 +120,10 @@ class MoviesService {
 
   addMovieFromIMDB(movie) {
     try {
-      validator.isEmpty(movie.TrailerUrl, "The trailer url can't be empty.");
+      validator.validateOMDBResponseObject(movie, ERROR_MESSAGE.WRONG_IMDB_ID);
+
+      validator.isEmpty(movie.TrailerUrl, ERROR_MESSAGE.EMPTY_TRAILER_URL);
+      validator.validateUrl(movie.TrailerUrl, ERROR_MESSAGE.WRONG_TRAILER_VIDEO_URL, ['https', 'youtube']);
     } catch (error) {
       return Promise.reject({ message: error.message });
     }
