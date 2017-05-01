@@ -7,12 +7,12 @@ class Searcher {
           foundMovies = [],
           movies = [];
 
-      moviesRef.once('value')
+   moviesRef.once('value')
             .then((moviesSnapshot) => {
               movies = moviesSnapshot.val();
 
               movies.forEach(movie => {
-                if (movie.Title === title || movie.Genre.indexOf(genre) !== -1) {
+                if (movie.Title === title && movie.Genre.indexOf(genre) !== -1) {
                     foundMovies.push(movie);
                 }
               });

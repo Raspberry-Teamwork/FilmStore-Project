@@ -60,6 +60,24 @@ class MoviesController {
              });
   }
 
+  loadTopMoviesPage() {
+    let topMoviesTemplatePath = './views/templates/top-movies-template.handlebars',
+        compile;
+
+    requester.get(topMoviesTemplatePath)
+             .then((template) => {
+
+               moviesService.getTopMovies()
+                            .then((movies) => {
+                              loadingScreen.finish();
+
+                              compile = Handlebars.compile(template);
+
+                              $('#main-content').html(compile(movies));
+                            });
+             });
+  }
+
   addMovie() {
     const title = $('.title').val(),
           year = $('.year').val(),

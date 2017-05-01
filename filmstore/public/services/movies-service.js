@@ -86,6 +86,24 @@ class MoviesService {
     return promise;
   }
 
+  getTopMovies() {
+    let topMovies = new Promise((resolve, reject) => {
+      const database = firebase.database().ref('/movies/');
+
+      database.on('value', (moviesSnapshot) => {
+        let currentTopFiveMovies = moviesSnapshot.val();
+
+        currentTopFiveMovies.sort(m => m.imdbRating)
+                            .reverse()
+                            .splice(5, currentTopFiveMovies.length - 1);
+
+         resolve(currentTopFiveMovies);
+      });
+    });
+
+    return topMovies;
+  }
+
   addMovie(movie) {
     try {
       validator.isEmpty(movie.Actors, ERROR_MESSAGE.EMPTY_ACTORS);
