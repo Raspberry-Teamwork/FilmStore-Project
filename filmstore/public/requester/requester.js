@@ -22,8 +22,6 @@ class Requester {
       $.ajax({
         url: url,
         method: 'GET',
-        crossDomain: true,
-        dataType: 'json',
         success: function(data) {
           resolve(data);
         },

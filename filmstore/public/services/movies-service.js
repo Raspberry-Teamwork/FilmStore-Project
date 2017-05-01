@@ -114,6 +114,23 @@ class MoviesService {
       resolve();
     });
   }
+
+
+  addMovieFromIMDB(movie) {
+    try {
+      validator.isEmpty(movie.TrailerUrl, "The trailer url can't be empty.");
+    } catch (error) {
+      return Promise.reject({ message: error.message });
+    }
+
+    const database = firebase.database().ref('/movies');
+
+    return new Promise((resolve, reject) => {
+      database.push(movie);
+
+      resolve();
+    });
+  }
 }
 
 const moviesService = new MoviesService();

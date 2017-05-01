@@ -55,7 +55,7 @@ class MoviesController {
     requester.get('./views/add-movie-from-IMDB.html')
              .then((template) => {
                loadingScreen.finish();
-               
+
                $('#main-content').html(template);
              });
   }
@@ -92,16 +92,29 @@ class MoviesController {
   }
 
   addMovieFromIMDB() {
-    let movieURL = 'http://img.omdbapi.com/?i=' + $('.imdbId').val() + '&apikey=f18a1ff5';
+    let movieId = $('.imdbId').val();
+
+    if (movieId.length === 0) {
+      toastr.error('The imdb id can not be empty.');
+      return;
+    }
+
+    let movieURL = 'http://www.omdbapi.com/?i=' + movieId,
+        trailerUrl = $('.trailer-url').val();
 
     requester.getFromOMDB(movieURL)
             .then(movie => {
-              console.log(movie);
-              // NOTE: Don't uncomement the row below because it isn't working.
-              // The creator of the OMDB is still not add our email.
 
-              //  moviesService.addMovie(movie);
-            });
+               movie.TrailerUrl = trailerUrl;
+
+               moviesService.addMovieFromIMDB(movie)
+                            .then(() => {
+                              toastr.success('The movie is successfully added.');
+                            })
+                            .catch((error) => {
+                              toastr.error(error.message);
+                            });;
+            })
   }
 }
 
