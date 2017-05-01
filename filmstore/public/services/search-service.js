@@ -1,3 +1,15 @@
+function convertObjectToArray(obj) {
+    let arr = [];
+
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        arr.push(obj[key]);
+      }
+    };
+
+    return arr;
+}
+
 class Searcher {
   constructor() {}
 
@@ -10,6 +22,10 @@ class Searcher {
    moviesRef.once('value')
             .then((moviesSnapshot) => {
               movies = moviesSnapshot.val();
+
+              if(typeof movies === typeof {}) {
+                movies = convertObjectToArray(movies);
+              }
 
               movies.forEach(movie => {
                 if (movie.Title === title && movie.Genre.indexOf(genre) !== -1) {

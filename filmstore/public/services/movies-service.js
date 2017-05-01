@@ -93,7 +93,11 @@ class MoviesService {
       database.on('value', (moviesSnapshot) => {
         let currentTopFiveMovies = moviesSnapshot.val();
 
-        currentTopFiveMovies.sort(m => m.imdbRating)
+        if (typeof currentTopFiveMovies === typeof {}) {
+          currentTopFiveMovies = convertObjectToArray(currentTopFiveMovies);
+        }
+
+        currentTopFiveMovies.sort(m => +m.imdbRating)
                             .reverse()
                             .splice(5, currentTopFiveMovies.length - 1);
 
