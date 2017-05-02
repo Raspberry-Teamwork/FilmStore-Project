@@ -12,6 +12,10 @@ let validator = (function() {
         INVALID_PASSWORD: 'The password must be between 6 and 20 characters long and must have letters and digits please try again.'
   };
 
+  const OMDB_ERROR_MESSAGES = {
+    INVALID_IMDB_ID: 'Incorrect IMDb ID.'
+  }
+
   function isEmpty(word, errMessage) {
     if (word.length < 1) {
       throw new Error(errMessage);
@@ -24,14 +28,17 @@ let validator = (function() {
     }
   }
 
-  function validateUrl(url, errMessage) {
-    let isWrong = url.indexOf('http') < 0 &&
-                  url.indexOf('https') < 0;
-
-    console.log(url.indexOf('https'));
-    console.log(url);
+  function validateUrl(url, errMessage, content) {
+    let isWrong = url.indexOf(content[0]) < 0 ||
+                  url.indexOf(content[1]) < 0;
 
     if (isWrong) {
+      throw new Error(errMessage);
+    }
+  }
+
+  function validateOMDBResponseObject(obj, errMessage) {
+    if(obj.Error === OMDB_ERROR_MESSAGES.INVALID_IMDB_ID || obj.Response === 'false') {
       throw new Error(errMessage);
     }
   }
@@ -50,7 +57,8 @@ let validator = (function() {
     validateEmailAndPassword,
     isEmpty,
     isBetween,
-    validateUrl
+    validateUrl,
+    validateOMDBResponseObject
   }
 }());
 

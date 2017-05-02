@@ -1,0 +1,21 @@
+{{#this}}
+  <div class="container" >
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>{{ Title }}</h2>
+        <div class="details">
+          <h2>IMDB rating : {{ imdbRating }}</h2>
+          <h3>Actors : <p>{{#if Actors}}{{ Actors }}{{else}}No Actors{{/if}}</p></h3>
+          <h3>Release date : <p>{{#if Released}}{{ Released }}{{else}}No release date{{/if}}</h3>
+          <h3>Runtime : <p>{{#if Runtime}}{{ Runtime }}{{else}}No runtime{{/if}}</h3>
+        </div>
+      </div>
+      <div class=" pull-right image-container">
+          <img src='{{ Poster }}'>
+      </div>
+    <button class="btn btn-info"><a class="more-details" href="#/all-movies/{{ Title }}">More Details . . .</a></button>
+    </div>
+    </div>
+  </div>
+{{/this}}

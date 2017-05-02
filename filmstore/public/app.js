@@ -29,6 +29,7 @@ let app = $.sammy('#main-content', function() {
   this.get('#/add-movie', moviesController.loadAddMoviePage);
   this.get('#/add-movie-from-imdb', moviesController.loadAddMovieFromIMDBPage);
   this.any(menugenerator.loadMenuWithTheAllGenres);
+  this.get('#/top-movies', moviesController.loadTopMoviesPage);
 
   this.get('#/genres/:genre',genresController.loadGenreMovie);
 

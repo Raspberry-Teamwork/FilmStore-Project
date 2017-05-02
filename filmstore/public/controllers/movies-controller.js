@@ -57,6 +57,24 @@ class MoviesController {
              });
   }
 
+  loadTopMoviesPage() {
+    let topMoviesTemplatePath = './views/templates/top-movies-template.handlebars',
+        compile;
+
+    requester.get(topMoviesTemplatePath)
+             .then((template) => {
+
+               moviesService.getTopMovies()
+                            .then((movies) => {
+                              loadingScreen.finish();
+
+                              compile = Handlebars.compile(template);
+
+                              $('#main-content').html(compile(movies));
+                            });
+             });
+  }
+
   addMovie() {
     const title = $('.title').val(),
           year = $('.year').val(),
@@ -74,7 +92,7 @@ class MoviesController {
           genres = $('.genres').val(),
           trailerUrl = $('.trailer-url').val();
 
-    let movie;
+  let movie;
 
    movie = {
      Actors: actors,
@@ -94,6 +112,9 @@ class MoviesController {
    };
 
    moviesService.addMovie(movie)
+                .then(() => {
+                  toastr.success('The movie is successfully added.');
+                })
                 .catch((error) => {
                   toastr.error(error.message);
                 });
@@ -111,8 +132,7 @@ class MoviesController {
         trailerUrl = $('.trailer-url').val();
 
     requester.getFromOMDB(movieURL)
-            .then(movie => {
-
+             .then(movie => {
                movie.TrailerUrl = trailerUrl;
 
                moviesService.addMovieFromIMDB(movie)
@@ -122,7 +142,7 @@ class MoviesController {
                             .catch((error) => {
                               toastr.error(error.message);
                             });;
-            })
+            });
   }
 }
 
