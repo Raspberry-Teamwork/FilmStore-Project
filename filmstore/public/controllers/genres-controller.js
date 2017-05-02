@@ -17,6 +17,8 @@ class GenresController {
       .then((template) => {
         genreService.getMovieByGenres(title)
           .then((movies) => {
+            loadingScreen.finish();
+
             compile = Handlebars.compile(template);
             $('#main-content').html(compile(movies));
           })

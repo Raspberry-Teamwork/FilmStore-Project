@@ -81,22 +81,13 @@ class MoviesController {
           description = $('.description').val(),
           runtime = $('.runtime').val(),
           released = $('.released').val(),
-<<<<<<< HEAD
           imgUrl = $('.img-url').val();
           genre = $('.genre').val().split(',');
-
-    let movie = {
-=======
-          imgUrl = $('.img-url').val(),
-          actors = $('.actors').val(),
-          genres = $('.genres').val(),
-          trailerUrl = $('.trailer-url').val();
 
   let movie;
 
    movie = {
      Actors: actors,
->>>>>>> origin/master
      Title: title,
      Year: year,
      Genres: genres,
@@ -104,11 +95,8 @@ class MoviesController {
      Released: released,
      Poster: imgUrl,
      Runtime: runtime,
-<<<<<<< HEAD
-     Genre:genre
-=======
+     Genre: genre,
      TrailerUrl: trailerUrl
->>>>>>> origin/master
    };
 
    moviesService.addMovie(movie)

@@ -19,27 +19,27 @@ class Searcher {
           foundMovies = [],
           movies = [];
 
-   moviesRef.once('value')
-            .then((moviesSnapshot) => {
-              movies = moviesSnapshot.val();
+          moviesRef.once('value')
+              .then((moviesSnapshot) => {
+                movies = moviesSnapshot.val();
 
-              if(typeof movies === typeof {}) {
-                movies = convertObjectToArray(movies);
-              }
-
-              movies.forEach(movie => {
-                if (movie.Title === title && movie.Genre.indexOf(genre) !== -1) {
-                    foundMovies.push(movie);
+                if(typeof movies === typeof {}) {
+                  movies = convertObjectToArray(movies);
                 }
+
+                movies.forEach(movie => {
+                  if (movie.Title === title && movie.Genre.indexOf(genre) !== -1) {
+                      foundMovies.push(movie);
+                    }
+                  });
+
+                  if (foundMovies.length === 0) {
+                    return reject({ message: 'The movie is not found.' });
+                  }
+
+                  resolve(foundMovies);
+                });
               });
-
-              if (foundMovies.length === 0) {
-                return reject({ message: 'The movie is not found.' });
-              }
-
-              resolve(foundMovies);
-            });
-    });
 
     return promise;
   }
