@@ -82,7 +82,7 @@ class UserController {
     requester.get(changePasswordPagePath, 'text/html')
              .then((template) => {
                loadingScreen.finish();
-               
+
                $('#main-content').html(template);
              });
   }
@@ -104,10 +104,7 @@ class UserController {
     userService.signUpWithEmailAndPassword(email, password, username)
                .catch((error) => {
                  toastr.error(error.message);
-               })
-              //  .then(() => {
-              //    sammy.redirect('#/home');
-              //  });
+               });
   }
 
   signIn(sammy) {
@@ -115,13 +112,12 @@ class UserController {
         password = $('#inputPassword').val();
 
     userService.signInWithEmailAndPassword(email, password)
+               .then(() => {
+                 sammy.redirect('#/home');
+               })
                .catch((error) => {
-
                  toastr.error(error.message);
                });
-              //  .then(() => {
-              //    sammy.redirect('#/home');
-              //  });
 
   }
 
