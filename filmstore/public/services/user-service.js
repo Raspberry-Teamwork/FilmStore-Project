@@ -13,10 +13,15 @@ class UserService {
 
     return firebase.auth()
                    .createUserWithEmailAndPassword(email, password)
-                   .then(() => {
-                     firebase.auth().currentUser.updateProfile({
+                   .then(() => this.getCurrentUser())
+                   .then((user) => {
+                     user.updateProfile({
                        displayName: username
                      });
+
+                     localStorage.setItem('email', email);
+                     localStorage.setItem('username', username);
+                     localStorage.setItem('userId', user.uid);
                    })
                    .catch((error) => {
                      return Promise.reject({ message: errorHandler.handleFirebaseErrors(error) });
