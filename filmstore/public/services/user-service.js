@@ -11,21 +11,25 @@ class UserService {
       return Promise.reject({ message: error.message });
     }
 
-    return firebase.auth()
-                   .createUserWithEmailAndPassword(email, password)
-                   .then(() => this.getCurrentUser())
-                   .then((user) => {
-                     user.updateProfile({
-                       displayName: username
-                     });
+    let authenticate = firebase.auth()
+                               .createUserWithEmailAndPassword(email, password)
+                               .then(() => this.getCurrentUser())
+                               .then((user) => {
+                                 user.updateProfile({
+                                   displayName: username
+                                 });
 
-                     localStorage.setItem('email', email);
-                     localStorage.setItem('username', username);
-                     localStorage.setItem('userId', user.uid);
-                   })
-                   .catch((error) => {
-                     return Promise.reject({ message: errorHandler.handleFirebaseErrors(error) });
-                   });
+                                 localStorage.setItem('email', email);
+                                 localStorage.setItem('username', username);
+                                 localStorage.setItem('userId', user.uid);
+
+                                 this.addUserToTheDatabase(user);
+                               })
+                               .catch((error) => {
+                                 return Promise.reject({ message: errorHandler.handleFirebaseErrors(error) });
+                               });
+
+      return authenticate;
   }
 
   signInWithEmailAndPassword(email, password) {
@@ -140,6 +144,22 @@ class UserService {
                                    });
 
     return changeUsername;
+  }
+
+  addUserToTheDatabase(user) {
+    let addUser = new Promise((resolve, reject) => {
+        let users = firebase.database().ref('/users'),
+            neededDataFromTheUser = {
+              uid: user.uid,
+              watchlist: [{
+                title: 'Sometitle'
+              }]
+            };
+
+        users.push(neededDataFromTheUser);
+    });
+
+    return addUser;
   }
 
 

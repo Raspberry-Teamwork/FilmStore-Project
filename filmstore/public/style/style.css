@@ -44,6 +44,10 @@ body.pg-loaded > .inner {
   display: block;
 }
 
+.add-to-watchlist {
+  margin-top: 10px;
+}
+
 .sk-circle {
   margin: 100px auto;
   width: 40px;
