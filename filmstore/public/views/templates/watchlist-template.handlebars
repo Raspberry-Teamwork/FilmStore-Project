@@ -1,0 +1,18 @@
+{{#this}}
+  <div class="container" >
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>{{ Title }}</h2>
+        <div class="details">
+          <h3>Plot : <p>{{#if Plot}}{{ Plot }}{{else}}Empty Description{{/if}}</p></h3>
+        </div>
+      </div>
+      <div class=" pull-right image-container">
+          <img src='{{ Poster }}'>
+      </div>
+    <button class="btn btn-info"><a class="more-details" href="#/all-movies/{{ Title }}">More Details . . .</a></button>
+    </div>
+    </div>
+  </div>
+{{/this}}

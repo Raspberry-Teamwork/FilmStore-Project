@@ -88,10 +88,10 @@ class UserController {
   }
 
   loadWatchlistPage() {
-    let template = './views/templates/all-movies-template.handlebars',
+    let template = './views/templates/watchlist-template.handlebars',
         compile;
 
-    requester.get('./views/templates/all-movies-template.handlebars')
+    requester.get(template)
              .then((template) => {
                loadingScreen.finish();
 
