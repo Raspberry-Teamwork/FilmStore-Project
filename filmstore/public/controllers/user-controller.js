@@ -87,6 +87,25 @@ class UserController {
              });
   }
 
+  loadWatchlistPage() {
+    let template = './views/templates/all-movies-template.handlebars',
+        compile;
+
+    requester.get('./views/templates/all-movies-template.handlebars')
+             .then((template) => {
+               loadingScreen.finish();
+
+               userService.getWatchlist()
+                          .then((movies) => {
+                            compile = Handlebars.compile(template);
+
+                            console.log(movies);
+
+                            $('#main-content').html(compile(movies));
+                          });
+             });
+  }
+
   showAccount(user) {
     let span  = $('.account .email'),
         profileLink = '#/profile/' + user.displayName;
@@ -104,7 +123,10 @@ class UserController {
     userService.signUpWithEmailAndPassword(email, password, username)
                .catch((error) => {
                  toastr.error(error.message);
-               });
+               })
+              //  .then(() => {
+              //    sammy.redirect('#/home');
+              //  });
   }
 
   signIn(sammy) {
@@ -116,6 +138,7 @@ class UserController {
                  sammy.redirect('#/home');
                })
                .catch((error) => {
+
                  toastr.error(error.message);
                });
 
@@ -181,6 +204,17 @@ class UserController {
                .catch((error) => {
                  toastr.error(error.message);
                });
+  }
+
+  addMovieToWatchlist(sammy) {
+    let title = $('.title').text();
+
+      userService.addMovieToWatchlist(title)
+                 .then(() => {
+                   loadingScreen.finish();
+
+                   sammy.redirect('#/all-movies/' + title);
+                 });
   }
 
   onAuthStateChanged(callback) {

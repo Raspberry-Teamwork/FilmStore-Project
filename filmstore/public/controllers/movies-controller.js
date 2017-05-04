@@ -132,15 +132,6 @@ class MoviesController {
                             });;
             });
   }
-
-  addMovieToWatchlist(sammy) {
-    let title = $('.title').text();
-
-    moviesService.addMovieToWatchlist(title)
-                 .then(() => {
-                   sammy.redirect('#/all-movies/' + title);
-                 });
-  }
 }
 
 const moviesController = new MoviesController();

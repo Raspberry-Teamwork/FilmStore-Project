@@ -1,4 +1,5 @@
 import { validator } from 'validator';
+import { moviesService } from './movies-service.js'
 import { errorHandler } from 'error-handler';
 
 class UserService {
@@ -162,6 +163,72 @@ class UserService {
     return addUser;
   }
 
+  addMovieToWatchlist(title) {
+    let currentUserId = localStorage.getItem('userId'),
+        usersDb = firebase.database().ref('/users'),
+        usersWatchlist,
+        userKey;
+
+    let addToWatchlist = moviesService.getMovieByTitle(title)
+                                      .then(movie => {
+                                        usersDb.once('value')
+                                                .then(snapshot => {
+                                                  snapshot.forEach(userSnap => {
+                                                    if (currentUserId === userSnap.val().uid) {
+                                                      userKey = userSnap.key;
+
+                                                      usersWatchlist = firebase.database().ref('/users/' + userKey + '/watchlist');
+
+                                                      usersWatchlist.push(movie);
+                                                      return;
+                                                    }
+                                                  })
+                                                });
+                                              });
+
+      return addToWatchlist;
+  }
+
+  getWatchlist() {
+    let watchlist = new Promise((resolve, reject) => {
+      let currentUserId = localStorage.getItem('userId'),
+          usersDb = firebase.database().ref('/users'),
+          watchlist,
+          userId;
+
+          usersDb.once('value')
+                 .then((usersSnapshot) => {
+
+                   usersSnapshot.forEach((userSnapshot) => {
+                     userId = userSnapshot.val().uid;
+
+                     if (currentUserId === userId) {
+                       watchlist = userSnapshot.val().watchlist;
+
+                       if (typeof watchlist === typeof {}) {
+                         watchlist = this.convertObjectToArray(watchlist);
+                       }
+
+                       resolve(watchlist);
+                     }
+                   });
+                 });
+    });
+
+
+    return watchlist;
+  }
+
+  convertObjectToArray(obj) {
+      let arr = [];
+
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          arr.push(obj[key]);
+        }
+      }
+      return arr;
+  }
 
   getCurrentUser() {
     const user = firebase.auth().currentUser;

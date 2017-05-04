@@ -28,7 +28,8 @@ let app = $.sammy('#main-content', function() {
 
   this.get('#/add-movie', moviesController.loadAddMoviePage);
   this.get('#/add-movie-from-imdb', moviesController.loadAddMovieFromIMDBPage);
-  this.get('#/add-to-watchlist', moviesController.addMovieToWatchlist);
+  this.get('#/add-to-watchlist', userController.addMovieToWatchlist);
+  this.get('#/view-watchlist', userController.loadWatchlistPage);
   this.any(menugenerator.loadMenuWithTheAllGenres);
   this.get('#/top-movies', moviesController.loadTopMoviesPage);
 
@@ -59,6 +60,7 @@ let app = $.sammy('#main-content', function() {
 });
 
 app.run('#/home');
+
 userController.onAuthStateChanged(function(user) {
   if (user) {
     $('.browse').removeClass('invisible');

@@ -157,32 +157,6 @@ class MoviesService {
     });
   }
 
-  addMovieToWatchlist(title) {
-    let currentUserId = localStorage.getItem('userId'),
-        usersDb = firebase.database().ref('/users'),
-        usersWatchlist,
-        userKey;
-
-    let addToWatchlist = this.getMovieByTitle(title)
-                             .then(movie => {
-                               usersDb.once('value')
-                                      .then(snapshot => {
-                                        snapshot.forEach(userSnap => {
-                                          if (currentUserId === userSnap.val().uid) {
-                                            userKey = userSnap.key;
-
-                                            usersWatchlist = firebase.database().ref('/users/' + userKey + '/watchlist');
-
-                                            usersWatchlist.push(movie);
-                                            return;
-                                          }
-                                        })
-                                      });
-                             });
-
-      return addToWatchlist;
-  }
-
   convertObjectToArray(obj) {
       let arr = [];
 
