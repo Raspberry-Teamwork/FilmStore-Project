@@ -28,9 +28,15 @@ class Searcher {
                 }
 
                 movies.forEach(movie => {
-                  if (movie.Title === title && movie.Genre.indexOf(genre) !== -1) {
+                     if ((title===null || title==='') && (movie.Title === title && (movie.Genre.indexOf(genre) !== -1))) {
                       foundMovies.push(movie);
-                    }
+                     }else
+                     {
+                       if((movie.Genre.indexOf(genre) !== -1)){
+                      foundMovies.push(movie);
+                       }
+                     }
+
                   });
 
                   if (foundMovies.length === 0) {
