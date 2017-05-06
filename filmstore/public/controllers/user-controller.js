@@ -104,6 +104,26 @@ class UserController {
              });
   }
 
+  loadCurrentWatchlistMovie(sammy) {
+    let currentWatchlistMovieTemplatePath = './views/templates/watchlist-current-movie-template.handlebars',
+        title = sammy.path.split('/')[3],
+        compile;
+
+    requester.get(currentWatchlistMovieTemplatePath)
+             .then((template) => {
+               loadingScreen.finish();
+
+               userService.getCurrentWatchListMovie(title)
+                          .then((movie) => {
+                            compile = Handlebars.compile(template);
+
+                            $('#main-content').html(compile(movie));
+                          });
+             });
+
+
+  }
+
   showAccount(user) {
     let span  = $('.account .email'),
         profileLink = '#/profile/' + user.displayName;

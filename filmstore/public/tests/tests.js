@@ -10,6 +10,7 @@ let expect = chai.expect;
 describe('FilmStore Tests', function() {
   homeControllerTests(expect);
   notFoundControllerTests(expect);
+  userControllerTests(expect);
 
   validatorTests(expect);
 });

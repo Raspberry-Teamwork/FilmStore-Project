@@ -220,6 +220,23 @@ class UserService {
     return watchlist;
   }
 
+  getCurrentWatchListMovie(title) {
+    let currentWatchlistMovie = new Promise((resolve, reject) => {
+        this.getWatchlist()
+          .then((watchlist) => {
+
+            watchlist.forEach((movie) => {
+              if(movie.Title === title) {
+                  resolve(movie);
+              }
+            });
+
+          });
+    });
+
+    return currentWatchlistMovie;
+  }
+
   convertObjectToArray(obj) {
       let arr = [];
 
