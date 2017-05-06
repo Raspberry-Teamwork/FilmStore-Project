@@ -107,6 +107,7 @@ class MoviesService {
   }
 
   addMovie(movie) {
+
     try {
       validator.isEmpty(movie.Actors, ERROR_MESSAGE.EMPTY_ACTORS);
       validator.isBetween(movie.Actors, 5, 100, ERROR_MESSAGE.WRONF_ACTORS_LENGTH);

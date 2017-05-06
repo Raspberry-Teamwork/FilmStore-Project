@@ -5,6 +5,8 @@ SystemJS.config({
     'systemjs-babel-build': './node_modules/systemjs-plugin-babel/systemjs-babel-browser.js',
     'main': './app.js',
 
+    'vue':'./../node_modules/vue/dist/vue.js',
+    'vue-select':'./../node_modules/vue-select/dist/vue-select.js',
     'firebase': './../node_modules/firebase/firebase.js',
     'requester': './../requester/requester.js',
 

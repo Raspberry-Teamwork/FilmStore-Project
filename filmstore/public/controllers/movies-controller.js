@@ -2,6 +2,8 @@ import { requester } from 'requester';
 
 import { moviesService } from 'movies-service';
 
+import { genreService } from 'genres-service';
+
 class MoviesController {
   constructor() {}
 
@@ -47,6 +49,23 @@ class MoviesController {
                loadingScreen.finish();
 
                 $('#main-content').html(template);
+                 Vue.component('v-select', VueSelect.VueSelect);
+                   genreService.getAllGenres()
+                            .then((genres) => {
+                                    new Vue({
+                                        data:{
+                                          selected:null,
+                                            options: genres.genres,
+                                            return:{
+
+                                            }
+                                        }, placeholder: {
+                                            type: String,
+                                            default: ''
+                                          },
+                                        el: '#genre-multiselector'
+                                    });
+                            });
              });
   }
 
@@ -80,13 +99,19 @@ class MoviesController {
   }
 
   addMovie() {
+
+
+
+
     const title = $('.title').val(),
           year = $('.year').val(),
           description = $('.description').val(),
           runtime = $('.runtime').val(),
           released = $('.released').val(),
           imgUrl = $('.img-url').val();
-          genre = $('.genre').val().split(',');
+          genre = $('#selected-genres').text().split(',');
+
+
 
   let movie = {
      Actors: actors,
@@ -103,6 +128,7 @@ class MoviesController {
 
    moviesService.addMovie(movie)
                 .then(() => {
+
                   toastr.success('The movie is successfully added.');
                 })
                 .catch((error) => {

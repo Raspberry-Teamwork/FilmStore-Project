@@ -19,7 +19,7 @@
             <!--<div class="form-group">
               <label class="col-lg-2 control-label">Genres</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control genres" placeholder="Separate the genres by comma(,).">
+                <input type="text" class="form-control genres" placeholder="Separate the genres by comma(,1).">
               </div>
             </div>-->
             <!--Commented out because is dublicated by the last one-->
@@ -53,10 +53,14 @@
                 <input class="form-control img-url" placeholder="Image Url">
               </div>
             </div>
+
             <div class="form-group">
               <label for="select" class="col-lg-2 control-label">Genres</label>
               <div class="col-lg-10">
-                <input class="form-control genre" placeholder="Add movie genres split by ',' ">
+              <div id="genre-multiselector" class="container-fluid form-control genre">
+                <v-select v-model="selected" multiple :options="options" ></v-select>
+                <span id="selected-genres" class="hidden">{{ selected }}</span>
+                </div>
               </div>
             </div>
             <div class="form-group">
@@ -76,3 +80,4 @@
       </div>
    </div>
 </div>
+
