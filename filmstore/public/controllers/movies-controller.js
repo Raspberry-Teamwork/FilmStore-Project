@@ -111,20 +111,18 @@ class MoviesController {
           imgUrl = $('.img-url').val();
           genre = $('#selected-genres').text().split(',');
 
-
-
-  let movie = {
-     Actors: actors,
-     Title: title,
-     Year: year,
-    //  Genres: genres, Commented out because is dublicated by the last one
-     Plot: description,
-     Released: released,
-     Poster: imgUrl,
-     Runtime: runtime,
-     Genre: genre,
-     TrailerUrl: trailerUrl
-   };
+    let movie = {
+      Actors: actors,
+      Title: title,
+      Year: year,
+      //  Genres: genres, Commented out because is dublicated by the last one
+      Plot: description,
+      Released: released,
+      Poster: imgUrl,
+      Runtime: runtime,
+      Genre: genre,
+      TrailerUrl: trailerUrl
+    };
 
    moviesService.addMovie(movie)
                 .then(() => {
