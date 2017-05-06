@@ -23,10 +23,10 @@ class MoviesController {
   loadCurrentMovie(sammy) {
 
     let title = sammy.path.split('/')[3],
+        currentMovieTemplateFilePath = './views/templates/current-movie-template.handlebars',
         compile;
 
-    console.log(title);
-    requester.get('./views/templates/current-movie-template.handlebars')
+    requester.get(currentMovieTemplateFilePath)
              .then((template) => {
                moviesService.getMovieByTitle(title)
                             .then((movie) => {
@@ -40,7 +40,9 @@ class MoviesController {
   }
 
   loadAddMoviePage() {
-    requester.get('./views/add-movie-page.html', 'text/html')
+    let addMoviePagePath = './views/add-movie-page.html';
+
+    requester.get(addMoviePagePath, 'text/html')
              .then((template) => {
                loadingScreen.finish();
 
@@ -49,7 +51,9 @@ class MoviesController {
   }
 
   loadAddMovieFromIMDBPage() {
-    requester.get('./views/add-movie-from-IMDB.html')
+    let addMovieFromIMDBPagePath = './views/add-movie-from-IMDB.html';
+
+    requester.get(addMovieFromIMDBPagePath)
              .then((template) => {
                loadingScreen.finish();
 
@@ -84,9 +88,7 @@ class MoviesController {
           imgUrl = $('.img-url').val();
           genre = $('.genre').val().split(',');
 
-  let movie;
-
-   movie = {
+  let movie = {
      Actors: actors,
      Title: title,
      Year: year,

@@ -88,18 +88,16 @@ class UserController {
   }
 
   loadWatchlistPage() {
-    let template = './views/templates/watchlist-template.handlebars',
+    let watchlistTemplatePath = './views/templates/watchlist-template.handlebars',
         compile;
 
-    requester.get(template)
+    requester.get(watchlistTemplatePath)
              .then((template) => {
                loadingScreen.finish();
 
                userService.getWatchlist()
                           .then((movies) => {
                             compile = Handlebars.compile(template);
-
-                            console.log(movies);
 
                             $('#main-content').html(compile(movies));
                           });
@@ -214,6 +212,10 @@ class UserController {
                    loadingScreen.finish();
 
                    sammy.redirect('#/all-movies/' + title);
+                   toastr.success('The movie is added successfully to your watchlist.');
+                 })
+                 .catch((error) => {
+                   toastr.error(error.message);
                  });
   }
 

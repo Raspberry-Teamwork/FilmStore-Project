@@ -47,7 +47,8 @@ class UserService {
   signInWithFacebook() {
     let facebookProvider = new firebase.auth.FacebookAuthProvider();
 
-    firebase.auth().signInWithPopup(facebookProvider)
+    firebase.auth()
+            .signInWithPopup(facebookProvider)
             .then((result) => {
               console.log(user);
             })
@@ -92,7 +93,7 @@ class UserService {
 
 
     let currentUser = firebase.auth().currentUser,
-        credentials = firebase.auth.EmailAuthProvider.credential  (
+        credentials = firebase.auth.EmailAuthProvider.credential(
           currentUser.email,
           currentPassword
         ),
