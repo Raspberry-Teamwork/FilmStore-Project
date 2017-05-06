@@ -29,7 +29,10 @@ let app = $.sammy('#main-content', function() {
   this.get('#/add-movie', moviesController.loadAddMoviePage);
   this.get('#/add-movie-from-imdb', moviesController.loadAddMovieFromIMDBPage);
   this.get('#/add-to-watchlist', userController.addMovieToWatchlist);
+  this.get('#/remove-from-watchlist', userController.removeMovieFromWatchlist);
+  
   this.get('#/view-watchlist', userController.loadWatchlistPage);
+  this.get('#/view-watchlist/:name', userController.loadCurrentWatchlistMovie);
   this.any(menugenerator.loadMenuWithTheAllGenres);
   this.get('#/top-movies', moviesController.loadTopMoviesPage);
 

@@ -4,10 +4,12 @@ class NotFound {
   constructor() { }
 
   loadNotFoundPage() {
-    requester.get('./views/notFound-page.html', 'text/html')
+    let notFoundPageMoviePath = './views/notFound-page.html';
+
+    requester.get(notFoundPageMoviePath, 'text/html')
              .then((view) => {
                loadingScreen.finish();
-               
+
                $('#main-content').html(view);
              });
   }

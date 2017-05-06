@@ -88,10 +88,10 @@ class UserController {
   }
 
   loadWatchlistPage() {
-    let template = './views/templates/watchlist-template.handlebars',
+    let watchlistTemplatePath = './views/templates/watchlist-template.handlebars',
         compile;
 
-    requester.get(template)
+    requester.get(watchlistTemplatePath)
              .then((template) => {
                loadingScreen.finish();
 
@@ -99,9 +99,25 @@ class UserController {
                           .then((movies) => {
                             compile = Handlebars.compile(template);
 
-                            console.log(movies);
-
                             $('#main-content').html(compile(movies));
+                          });
+             });
+  }
+
+  loadCurrentWatchlistMovie(sammy) {
+    let currentWatchlistMovieTemplatePath = './views/templates/watchlist-current-movie-template.handlebars',
+        title = sammy.path.split('/')[3],
+        compile;
+
+    requester.get(currentWatchlistMovieTemplatePath)
+             .then((template) => {
+               loadingScreen.finish();
+
+               userService.getCurrentWatchListMovie(title)
+                          .then((movie) => {
+                            compile = Handlebars.compile(template);
+
+                            $('#main-content').html(compile(movie));
                           });
              });
   }
@@ -213,8 +229,26 @@ class UserController {
                  .then(() => {
                    loadingScreen.finish();
 
-                   sammy.redirect('#/all-movies/' + title);
+                   toastr.success('The movie is added successfully to your watchlist.');
+                 })
+                 .catch((error) => {
+                   toastr.error(error.message);
                  });
+  }
+
+  removeMovieFromWatchlist(sammy) {
+    let title = $('.title').text();
+
+    userService.removeMovieFromWatchlist(title)
+               .then(() => {
+                 toastr.success('Removed movie successfully');
+
+                 sammy.redirect('#/view-watchlist');
+               })
+               .catch((error) => {
+                 toastr.error(error.message);
+               });
+
   }
 
   onAuthStateChanged(callback) {

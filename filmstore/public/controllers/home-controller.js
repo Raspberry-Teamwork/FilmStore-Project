@@ -4,8 +4,9 @@ class HomeController {
   constructor() {}
 
   loadHomePage() {
+    let homePagePath = './views/home-page-template.html';
 
-    requester.get('./views/home-page-template.html', 'text/html')
+    requester.get(homePagePath, 'text/html')
              .then((template) => {
                loadingScreen.finish();
 

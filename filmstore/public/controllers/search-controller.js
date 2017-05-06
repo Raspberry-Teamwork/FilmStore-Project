@@ -5,7 +5,9 @@ class Search {
   constructor() {}
 
   loadSearchPage() {
-    requester.get('./views/search-page.html', 'text/html')
+    let searchPagePath = './views/search-page.html';
+
+    requester.get(searchPagePath, 'text/html')
              .then((template) => {
                loadingScreen.finish();
 
@@ -16,11 +18,11 @@ class Search {
   search() {
     let genre = $('#genre option:selected').text(),
         title = $('#title').val(),
+        movieTemplatePath = './views/templates/all-movies-template.handlebars',
         compile;
 
     searcherService.search(genre, title)
                    .then((movies) => {
-                     let movieTemplatePath = './views/templates/all-movies-template.handlebars';
 
                      requester.get(movieTemplatePath)
                               .then((template) => {
