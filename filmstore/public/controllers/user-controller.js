@@ -120,8 +120,6 @@ class UserController {
                             $('#main-content').html(compile(movie));
                           });
              });
-
-
   }
 
   showAccount(user) {
@@ -237,6 +235,21 @@ class UserController {
                  .catch((error) => {
                    toastr.error(error.message);
                  });
+  }
+
+  removeMovieFromWatchlist(sammy) {
+    let title = $('.title').text();
+
+    // userService.removeMovieFromWatchlist(title)
+    //            .then(() => {
+    //              toastr.success('Removed movie successfully');
+    //
+    //              sammy.redirect('#/view-watchlist');
+    //            })
+    //            .catch((error) => {
+    //              toastr.error(error.message);
+    //            });
+
   }
 
   onAuthStateChanged(callback) {
