@@ -90,7 +90,7 @@ class MoviesController {
      Actors: actors,
      Title: title,
      Year: year,
-     Genres: genres,
+    //  Genres: genres, Commented out because is dublicated by the last one
      Plot: description,
      Released: released,
      Poster: imgUrl,
