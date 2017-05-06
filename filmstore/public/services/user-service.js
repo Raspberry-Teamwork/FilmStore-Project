@@ -210,6 +210,8 @@ class UserService {
                          watchlist = this.convertObjectToArray(watchlist);
                        }
 
+                       watchlist.splice(0, 0);
+
                        resolve(watchlist);
                      }
                    });
@@ -237,45 +239,46 @@ class UserService {
     return currentWatchlistMovie;
   }
 
- // NOTE: THIS FUNCTIONALITY WILL BE FIXED LATER
+  removeMovieFromWatchlist(title) {
+    let remove = new Promise((resolve, reject) => {
+      let currentUserId = localStorage.getItem('userId'),
+          usersDb = firebase.database().ref('/users'),
+          currentUserWatchList,
+          watchlist,
+          currentMovie,
+          movie,
+          userId;
 
-  // removeMovieFromWatchlist(title) {
-  //   let remove = new Promise((resolve, reject) => {
-  //     let currentUserId = localStorage.getItem('userId'),
-  //         usersDb = firebase.database().ref('/users'),
-  //         watchlist,
-  //         currentMovie,
-  //         userId;
-  //
-  //
-  //     usersDb.once('value')
-  //            .then((usersSnapshot) => {
-  //
-  //              usersSnapshot.forEach((userSnapshot) => {
-  //                userId = userSnapshot.val().uid;
-  //
-  //                if (currentUserId === userId) {
-  //                  watchlist = userSnapshot.val().watchlist;
-  //
-  //                  if (typeof watchlist === typeof {}) {
-  //                    watchlist = this.convertObjectToArray(watchlist);
-  //                  }
-  //
-  //                  for (var i = 0; i < watchlist.length; i++) {
-  //                    currentMovie = watchlist[i];
-  //
-  //                    if(currentMovie.Title === title) {
-  //                      console.log(currentMovie.key);
-  //                      resolve();
-  //                    }
-  //                  }
-  //                }
-  //              });
-  //            });
-  //   });
+
+      usersDb.once('value')
+             .then((usersSnapshot) => {
+
+               usersSnapshot.forEach((userSnapshot) => {
+                 userId = userSnapshot.val().uid;
+
+                 if (currentUserId === userId) {
+                   currentUserWatchList = firebase.database().ref('/users/' + userSnapshot.key + '/watchlist');
+
+                   currentUserWatchList.on('value', (snp) => {
+                     watchlist = snp.val();
+
+                     for(let key in watchlist) {
+                       movie = watchlist[key];
+
+                       if (movie.Title === title) {
+                         firebase.database().ref('/users/' + userSnapshot.key + '/watchlist/' + key).remove();
+
+                         resolve();
+                       }
+                     }
+                   });
+                 }
+               });
+             });
+    });
 
     return remove;
-  }
+ }
 
   convertObjectToArray(obj) {
       let arr = [];

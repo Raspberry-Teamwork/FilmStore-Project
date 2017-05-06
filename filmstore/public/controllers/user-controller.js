@@ -229,7 +229,6 @@ class UserController {
                  .then(() => {
                    loadingScreen.finish();
 
-                   sammy.redirect('#/all-movies/' + title);
                    toastr.success('The movie is added successfully to your watchlist.');
                  })
                  .catch((error) => {
@@ -240,15 +239,15 @@ class UserController {
   removeMovieFromWatchlist(sammy) {
     let title = $('.title').text();
 
-    // userService.removeMovieFromWatchlist(title)
-    //            .then(() => {
-    //              toastr.success('Removed movie successfully');
-    //
-    //              sammy.redirect('#/view-watchlist');
-    //            })
-    //            .catch((error) => {
-    //              toastr.error(error.message);
-    //            });
+    userService.removeMovieFromWatchlist(title)
+               .then(() => {
+                 toastr.success('Removed movie successfully');
+
+                 sammy.redirect('#/view-watchlist');
+               })
+               .catch((error) => {
+                 toastr.error(error.message);
+               });
 
   }
 
