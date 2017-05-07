@@ -114,13 +114,19 @@ class MoviesController {
       plot = $('#form-Plot').val(),
       runtime = $('#form-Runtime').val(),
       released = $('#form-Released').val(),
-      imgUrl = $('#form-Imgurl').val(),
+      poster = $('#form-Poster').val(),
       actors=$('#form-Actors').val(),
       country=$('form-Country').val(),
       awards=$('from-Awards').val(),
-      Director=$('form-Director').val(),
-      Language=$('form-Language').val(),
+      director=$('form-Director').val(),
+      language=$('form-Language').val(),
       trailerUrl=$('#form-TrailerUrl').val(),
+      metascore=$('form-Metascore').val(),
+      rated=$('form-Rated').val(),
+      top250=$('form-Top250').val(),
+      type=$('form-Type').val(),
+      writer=$('from-Writer').val(),
+
       genre = $('#selected-genres').text().split(',');
 
     let movie = {
@@ -130,7 +136,7 @@ class MoviesController {
       //  Genres: genres, Commented out because is dublicated by the last one
       Plot: plot,
       Released: released,
-      Poster: imgUrl,
+      Poster: poster,
       Runtime: runtime,
       Genre: genre,
       TrailerUrl: trailerUrl
