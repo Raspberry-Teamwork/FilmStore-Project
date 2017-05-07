@@ -59,10 +59,7 @@ class MoviesController {
           .then((prop) => {
 
             compile = Handlebars.compile(template);
-            console.log(prop);
             $('#main-content').html(compile(prop));
-
-
           });
         Vue.component('v-select', VueSelect.VueSelect);
         genreService.getAllGenres()
@@ -71,9 +68,6 @@ class MoviesController {
               data: {
                 selected: null,
                 options: genres.genres,
-                return: {
-
-                }
               },
               placeholder: {
                 type: String,
@@ -117,12 +111,16 @@ class MoviesController {
   addMovie() {
     const title = $('#form-Title').val(),
       year = $('#form-Year').val(),
-      description = $('#form-Description').val(),
+      plot = $('#form-Plot').val(),
       runtime = $('#form-Runtime').val(),
       released = $('#form-Released').val(),
-      imgUrl = $('#form-Img-url').val(),
+      imgUrl = $('#form-Imgurl').val(),
       actors=$('#form-Actors').val(),
-      trailerUrl=$('#form-Actors').val(),
+      country=$('form-Country').val(),
+      awards=$('from-Awards').val(),
+      Director=$('form-Director').val(),
+      Language=$('form-Language').val(),
+      trailerUrl=$('#form-TrailerUrl').val(),
       genre = $('#selected-genres').text().split(',');
 
     let movie = {
@@ -130,14 +128,13 @@ class MoviesController {
       Title: title,
       Year: year,
       //  Genres: genres, Commented out because is dublicated by the last one
-      Plot: description,
+      Plot: plot,
       Released: released,
       Poster: imgUrl,
       Runtime: runtime,
       Genre: genre,
       TrailerUrl: trailerUrl
     };
-    console.log(movie);
     moviesService.addMovie(movie)
       .then(() => {
 
