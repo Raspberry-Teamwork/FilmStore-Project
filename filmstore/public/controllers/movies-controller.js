@@ -100,15 +100,14 @@ class MoviesController {
 
   addMovie() {
 
-
-
-
-    const title = $('.title').val(),
+  const title = $('.title').val(),
           year = $('.year').val(),
           description = $('.description').val(),
+          actors = $('.actors').val(),
+          trailerUrl = $('#trailer-url').val(),
           runtime = $('.runtime').val(),
           released = $('.released').val(),
-          imgUrl = $('.img-url').val();
+          imgUrl = $('.img-url').val(),
           genre = $('#selected-genres').text().split(',');
 
     let movie = {

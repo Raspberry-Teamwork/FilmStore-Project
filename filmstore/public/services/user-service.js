@@ -210,7 +210,7 @@ class UserService {
                          watchlist = this.convertObjectToArray(watchlist);
                        }
 
-                       watchlist.splice(0, 0);
+                       watchlist.splice(0, 1);
 
                        resolve(watchlist);
                      }

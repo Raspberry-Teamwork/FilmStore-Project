@@ -124,7 +124,7 @@ class MoviesService {
       validator.isEmpty(movie.TrailerUrl, ERROR_MESSAGE.EMPTY_TRAILER_URL);
       validator.validateUrl(movie.TrailerUrl, ERROR_MESSAGE.WRONG_TRAILER_VIDEO_URL, ['https', 'youtube']);
 
-      validator.validateUrl(movie.Poster, ERROR_MESSAGE.WRONG_IMG_URL, ['http', 'https']);
+      validator.validateUrl(movie.Poster, ERROR_MESSAGE.WRONG_IMG_URL, ['http', 'http']);
     } catch(error) {
       return Promise.reject({ message: error.message });
     }
