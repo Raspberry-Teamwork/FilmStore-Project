@@ -4,6 +4,7 @@
         <form class="form-horizontal" action="#/add-movie" method="POST">
           <fieldset>
             <legend><h2><strong>Add movie</strong></h2></legend>
+
             <div class="form-group">
               <label class="col-lg-2 control-label">Title</label>
               <div class="col-lg-10">
@@ -67,6 +68,22 @@
                 <button type="submit" class="btn btn-md btn-success">Add</button>
               </div>
             </div>
+            {{#each myObject}}
+    Key: {{@key}} Value = {{this}}
+            {{/each}}
+            {{#each keys}}
+            {{#if Genre}}
+                <img src="star.gif" alt="Active">
+                {{else}}
+                <div class="form-group">
+              <label class="col-lg-2 control-label">{{this}}</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control {{this}}" placeholder="{{this}}">
+              </div>
+            </div>
+                {{/if}}
+
+            {{/each}}
           </fieldset>
         </form>
       </div>

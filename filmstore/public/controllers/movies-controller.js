@@ -42,13 +42,22 @@ class MoviesController {
   }
 
   loadAddMoviePage() {
-    let addMoviePagePath = './views/add-movie-page.html';
+    let addMoviePagePath = './views/templates/add-movies-template.handlebars',
+        compile;
 
-    requester.get(addMoviePagePath, 'text/html')
+    requester.get(addMoviePagePath)
              .then((template) => {
                loadingScreen.finish();
 
-                $('#main-content').html(template);
+                 moviesService.getMovieProperties()
+                 .then((prop) => {
+
+                 compile = Handlebars.compile(template);
+                 console.log(prop);
+                $('#main-content').html(compile(prop));
+
+
+                 });
                  Vue.component('v-select', VueSelect.VueSelect);
                    genreService.getAllGenres()
                             .then((genres) => {

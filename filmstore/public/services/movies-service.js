@@ -82,6 +82,34 @@ class MoviesService {
 
     return promise;
   }
+  getMovieProperties() {
+    const promise = new Promise((resolve, reject) => {
+      const database = firebase.database().ref('/movies/');
+      let movie,
+          movies,
+          moviesLength,
+          currentMovie;
+
+      database.on('value', function(snapshot) {
+        movies = snapshot.val();
+
+        if (typeof movies === typeof {}) {
+         movies = convertObjectToArray(movies);
+        }
+          const values = Object.keys(movies[0]);
+          const props={};
+
+          values.forEach(function(element) {
+            props[element]=element;
+          }, this);
+console.log(props);
+            resolve(props);
+      });
+
+    });
+
+    return promise;
+  }
 
 
   getTopMovies() {
