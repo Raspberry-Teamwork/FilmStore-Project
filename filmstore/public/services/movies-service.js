@@ -100,10 +100,15 @@ class MoviesService {
           const props={};
 
           values.forEach(function(element) {
+            console.log(element);
+            if(element=='Genre'){
+            props[element]={name:element};
+            }else{
             props[element]=element;
+            }
           }, this);
-console.log(props);
-            resolve(props);
+          let result={keys:props};
+            resolve(result);
       });
 
     });
