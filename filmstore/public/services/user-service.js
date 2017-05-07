@@ -50,7 +50,7 @@ class UserService {
     firebase.auth()
             .signInWithPopup(facebookProvider)
             .then((result) => {
-              console.log(user);
+              console.log(result);
             })
             .catch((error) => {
               console.log(error);
