@@ -75,7 +75,10 @@ class MoviesController {
               },
               el: '#genre-multiselector'
             });
-             $('#form-Year').datetimepicker();
+            $('#form-Year').datetimepicker({
+               inline: true,
+                format: 'YYYY'
+            });
           });
       });
   }
@@ -116,17 +119,17 @@ class MoviesController {
       runtime = $('#form-Runtime').val(),
       released = $('#form-Released').val(),
       poster = $('#form-Poster').val(),
-      actors=$('#form-Actors').val(),
-      country=$('form-Country').val(),
-      awards=$('from-Awards').val(),
-      director=$('form-Director').val(),
-      language=$('form-Language').val(),
-      trailerUrl=$('#form-TrailerUrl').val(),
-      metascore=$('form-Metascore').val(),
-      rated=$('form-Rated').val(),
-      top250=$('form-Top250').val(),
-      type=$('form-Type').val(),
-      writer=$('from-Writer').val(),
+      actors = $('#form-Actors').val(),
+      country = $('form-Country').val(),
+      awards = $('from-Awards').val(),
+      director = $('form-Director').val(),
+      language = $('form-Language').val(),
+      trailerUrl = $('#form-TrailerUrl').val(),
+      metascore = $('form-Metascore').val(),
+      rated = $('form-Rated').val(),
+      top250 = $('form-Top250').val(),
+      type = $('form-Type').val(),
+      writer = $('from-Writer').val(),
 
       genre = $('#selected-genres').text().split(',');
 
