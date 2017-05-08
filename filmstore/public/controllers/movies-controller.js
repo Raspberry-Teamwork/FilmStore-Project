@@ -75,6 +75,7 @@ class MoviesController {
               },
               el: '#genre-multiselector'
             });
+             $('#form-Year').datetimepicker();
           });
       });
   }
@@ -172,7 +173,7 @@ class MoviesController {
           })
           .catch((error) => {
             toastr.error(error.message);
-          });;
+          });
       });
   }
 }
