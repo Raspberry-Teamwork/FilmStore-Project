@@ -53,10 +53,7 @@ class MoviesController {
                  .then((prop) => {
 
                  compile = Handlebars.compile(template);
-                 console.log(prop);
                 $('#main-content').html(compile(prop));
-
-
                  });
                  Vue.component('v-select', VueSelect.VueSelect);
                    genreService.getAllGenres()
@@ -75,7 +72,33 @@ class MoviesController {
                                         el: '#genre-multiselector'
                                     });
                             });
-             });
+             })
+      .then((template) => {
+        loadingScreen.finish();
+
+        moviesService.getMovieProperties()
+          .then((prop) => {
+
+            compile = Handlebars.compile(template);
+            $('#main-content').html(compile(prop));
+          });
+        Vue.component('v-select', VueSelect.VueSelect);
+        genreService.getAllGenres()
+          .then((genres) => {
+            new Vue({
+              data: {
+                selected: null,
+                options: genres.genres,
+              },
+              placeholder: {
+                type: String,
+                default: ''
+              },
+              el: '#genre-multiselector'
+            });
+             $('#form-Year').datetimepicker();
+          });
+      });
   }
 
   loadAddMovieFromIMDBPage() {
@@ -109,15 +132,25 @@ class MoviesController {
 
   addMovie() {
 
-  const title = $('.title').val(),
-          year = $('.year').val(),
-          description = $('.description').val(),
-          actors = $('.actors').val(),
-          trailerUrl = $('#trailer-url').val(),
-          runtime = $('.runtime').val(),
-          released = $('.released').val(),
-          imgUrl = $('.img-url').val(),
-          genre = $('#selected-genres').text().split(',');
+    const title = $('#form-Title').val(),
+      year = $('#form-Year').val(),
+      plot = $('#form-Plot').val(),
+      runtime = $('#form-Runtime').val(),
+      released = $('#form-Released').val(),
+      poster = $('#form-Poster').val(),
+      actors=$('#form-Actors').val(),
+      country=$('form-Country').val(),
+      awards=$('from-Awards').val(),
+      director=$('form-Director').val(),
+      language=$('form-Language').val(),
+      trailerUrl=$('#form-TrailerUrl').val(),
+      metascore=$('form-Metascore').val(),
+      rated=$('form-Rated').val(),
+      top250=$('form-Top250').val(),
+      type=$('form-Type').val(),
+      writer=$('from-Writer').val(),
+
+      genre = $('#selected-genres').text().split(',');
 
     let movie = {
       Actors: actors,

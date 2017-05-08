@@ -54,11 +54,19 @@
             {{#each keys }}
               {{#if this.name}}
               <div class="form-group">
+<<<<<<< HEAD
               <label for="select" class="col-lg-2 control-label">{{this.name}}</label>
               <div class="col-lg-10">
               <div id="genre-multiselector" class="container-fluid form-control {{this.name}}">
                 <v-select v-model="selected" multiple :options="options" ></v-select>
                 <span id="selected-genres" class="hidden">{{ selected }}</span>
+=======
+              <label for="select" class="col-lg-2 control-label">{{this.genre}}</label>
+              <div class="col-lg-10">
+              <div id="genre-multiselector" class="container-fluid form-control {{this.genre}}">
+                <v-select v-model="selected" multiple :options="options" ></v-select>
+                <span id="selected-genres" class="hidden">\{{ selected }}</span>
+>>>>>>> parent of 023b30b... datetimepicker added
                 </div>
               </div>
             </div>

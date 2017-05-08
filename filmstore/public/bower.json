@@ -16,7 +16,6 @@
   ],
   "dependencies": {
     "mocha": "^3.2.0",
-    "chai": "^3.5.0",
-    "eonasdan-bootstrap-datetimepicker": "^4.17.47"
+    "chai": "^3.5.0"
   }
 }
