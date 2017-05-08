@@ -6,11 +6,11 @@
             <legend><h2><strong>Add movie</strong></h2></legend>
 
             {{#each keys }}
-              {{#if this.name}}
+              {{#if this.genre}}
               <div class="form-group">
-              <label for="select" class="col-lg-2 control-label">{{this.name}}</label>
+              <label for="select" class="col-lg-2 control-label">{{this.genre}}</label>
               <div class="col-lg-10">
-              <div id="genre-multiselector" class="container-fluid form-control {{this.name}}">
+              <div id="genre-multiselector" class="container-fluid form-control {{this.genre}}">
                 <v-select v-model="selected" multiple :options="options" ></v-select>
                 <span id="selected-genres" class="hidden">\{{ selected }}</span>
                 </div>

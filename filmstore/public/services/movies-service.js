@@ -29,7 +29,7 @@ const ERROR_MESSAGE = {
    WRONG_IMG_URL: 'Wrong img url. It must begin with http or https.',
 
   WRONG_IMDB_ID: "The given ID isn't found or it is incorrect."
-}
+};
 
 class MoviesService {
   constructor() {}
@@ -98,16 +98,16 @@ class MoviesService {
         }
           const values = Object.keys(movies[0]);
           const props={};
-
+          //changing format of object properties for easier handling with templates
           values.forEach(function(element) {
-            console.log(element);
             if(element=='Genre'){
-            props[element]={name:element};
+            props[element]={genre:element};
             }else{
             props[element]=element;
             }
           }, this);
           let result={keys:props};
+
             resolve(result);
       });
 
