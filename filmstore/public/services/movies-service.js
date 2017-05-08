@@ -29,7 +29,7 @@ const ERROR_MESSAGE = {
    WRONG_IMG_URL: 'Wrong img url. It must begin with http or https.',
 
   WRONG_IMDB_ID: "The given ID isn't found or it is incorrect."
-}
+};
 
 class MoviesService {
   constructor() {}
@@ -98,16 +98,16 @@ class MoviesService {
         }
           const values = Object.keys(movies[0]);
           const props={};
-
+          //changing format of object properties for easier handling with templates
           values.forEach(function(element) {
-             if(element=='Genre'){
+            if(element=='Genre'){
             props[element]={genre:element};
             }else{
             props[element]=element;
-          }
+            }
           }, this);
-            resolve(props);
           let result={keys:props};
+
             resolve(result);
       });
 
@@ -157,7 +157,7 @@ class MoviesService {
       validator.isEmpty(movie.TrailerUrl, ERROR_MESSAGE.EMPTY_TRAILER_URL);
       validator.validateUrl(movie.TrailerUrl, ERROR_MESSAGE.WRONG_TRAILER_VIDEO_URL, ['https', 'youtube']);
 
-      validator.validateUrl(movie.Poster, ERROR_MESSAGE.WRONG_IMG_URL, ['http', 'http']);
+      validator.validateUrl(movie.Poster, ERROR_MESSAGE.WRONG_IMG_URL, ['http', 'https']);
     } catch(error) {
       return Promise.reject({ message: error.message });
     }

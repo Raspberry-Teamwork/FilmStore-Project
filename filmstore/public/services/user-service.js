@@ -50,7 +50,7 @@ class UserService {
     firebase.auth()
             .signInWithPopup(facebookProvider)
             .then((result) => {
-              console.log(result);
+              console.log(user);
             })
             .catch((error) => {
               console.log(error);
@@ -210,7 +210,7 @@ class UserService {
                          watchlist = this.convertObjectToArray(watchlist);
                        }
 
-                       watchlist.splice(0, 1);
+                       watchlist.splice(0, 0);
 
                        resolve(watchlist);
                      }
