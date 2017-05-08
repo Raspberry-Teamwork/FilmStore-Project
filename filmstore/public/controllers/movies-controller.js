@@ -132,6 +132,7 @@ class MoviesController {
 
   addMovie() {
 
+<<<<<<< HEAD
     const title = $('#form-Title').val(),
       year = $('#form-Year').val(),
       plot = $('#form-Plot').val(),
@@ -151,6 +152,17 @@ class MoviesController {
       writer=$('from-Writer').val(),
 
       genre = $('#selected-genres').text().split(',');
+=======
+  const title = $('.title').val(),
+          year = $('.year').val(),
+          description = $('.description').val(),
+          actors = $('.actors').val(),
+          trailerUrl = $('#trailer-url').val(),
+          runtime = $('.runtime').val(),
+          released = $('.released').val(),
+          imgUrl = $('.img-url').val(),
+          genre = $('#selected-genres').text().split(',');
+>>>>>>> 6d66140b0866ae5ff8ca8d0f581b74b75821f4f4
 
     let movie = {
       Actors: actors,
