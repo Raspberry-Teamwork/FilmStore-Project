@@ -145,9 +145,9 @@ class MoviesController {
       Genre: genre,
       TrailerUrl: trailerUrl
     };
+
     moviesService.addMovie(movie)
       .then(() => {
-
         toastr.success('The movie is successfully added.');
       })
       .catch((error) => {

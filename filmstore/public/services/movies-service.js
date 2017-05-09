@@ -82,6 +82,7 @@ class MoviesService {
 
     return promise;
   }
+
   getMovieProperties() {
     const promise = new Promise((resolve, reject) => {
       const database = firebase.database().ref('/movies/');
@@ -199,6 +200,7 @@ class MoviesService {
           arr.push(obj[key]);
         }
       }
+      
       return arr;
   }
 }
