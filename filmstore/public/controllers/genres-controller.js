@@ -11,11 +11,12 @@ class GenresController {
 
   loadGenreMovie(sammy) {
 
-    let title = sammy.path.split('/')[3],
-      compile;
+    let genre = sammy.path.split('/')[3],
+        genreToGet=[genre],
+        compile;
     requester.get('./views/templates/genres-movie-template.handlebars')
       .then((template) => {
-        genreService.getMovieByGenres(title)
+        genreService.getMovieByGenres(genreToGet)
           .then((movies) => {
             loadingScreen.finish();
 

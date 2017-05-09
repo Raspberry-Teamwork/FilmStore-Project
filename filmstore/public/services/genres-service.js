@@ -11,15 +11,13 @@ class GenreService {
 
     getMovieByGenres(genres) {
         const promise = new Promise((resolve, reject) => {
+             console.log(` Genre service ${genres} type ${typeof genres}`);
             const database = firebase.database().ref('/movies/');
             let movie,
                 movies,
-                moviesLength,
                 moviesWithGenres=[],
                 currentMovie,
-                genresArr=genres.split(','),
-                genLen = genresArr.length;
-
+                genLen = genres.length;
 
             database.on('value', function (snapshot) {
                 let movieProp=(snapshot.val()[0].Genre.split(','));
@@ -29,12 +27,21 @@ class GenreService {
                     currentMovie = movies[i];
                     let currentMovieGenres=currentMovie.Genre.split(',');
                     currentMovieGenres.forEach(function(element) {
-                    if (genres.toLowerCase()===element.toLowerCase()) {
+
+                        for (let i of genres) {
+                            var currentGenre = i.trim();
+
+                            console.log(`/${currentGenre.replace('"','').replace('"','').toLowerCase()}/ and #${element.toLowerCase()}`);
+                            console.log(`/${currentGenre.toLowerCase() === element.toLowerCase()}`);
+
+
+                             if (currentGenre.replace('"','').replace('"','').toLowerCase()===element.toLowerCase()) {
+                                 console.log("HITTTT");
                                  moviesWithGenres.push(currentMovie);
+                                }
                         }
                     }, this);
                 }
-                console.log(moviesWithGenres);
                 resolve(moviesWithGenres);
             });
         });

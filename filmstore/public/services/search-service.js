@@ -1,3 +1,7 @@
+import {
+  genreService
+} from 'genres-service';
+
 function convertObjectToArray(obj) {
     let arr = [];
 
@@ -5,7 +9,7 @@ function convertObjectToArray(obj) {
       if (obj.hasOwnProperty(key)) {
         arr.push(obj[key]);
       }
-    };
+    }
 
     return arr;
 }
@@ -15,11 +19,26 @@ class Searcher {
 
   search(genre, title) {
     let promise = new Promise((resolve, reject) => {
-      let moviesRef = firebase.database().ref('/movies'),
-          foundMovies = [],
-          movies = [];
+          let foundMovies = [];
+          if (genre !==null && !title) {
+            genreService.getMovieByGenres(genre)
+                  .then((movies) => {
 
-          moviesRef.once('value')
+              foundMovies=movies;
+                  if (foundMovies.length === 0) {
+                    return reject({ message: 'The movie is not found.' });
+                  }
+                  console.log(foundMovies);
+            resolve(foundMovies);
+
+         });
+          }else{
+          console.log(`Other Search`);
+
+            let moviesRef = firebase.database().ref('/movies'),
+              movies = [];
+
+             moviesRef.once('value')
               .then((moviesSnapshot) => {
                 movies = moviesSnapshot.val();
 
@@ -45,6 +64,10 @@ class Searcher {
 
                   resolve(foundMovies);
                 });
+
+          }
+
+
               });
 
     return promise;

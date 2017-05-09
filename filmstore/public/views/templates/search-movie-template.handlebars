@@ -1,0 +1,29 @@
+<div class="container" >
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-6">
+            <label for="sel1">Genre :</label></br>
+              <div id="genre-multiselector" class="col-lg-10">
+                <v-select v-model="selected" multiple :options="options" >/{{selected}}</v-select>
+                <span id="searched-genres" class="hidden">\{{ selected }}</span>
+             </div>
+      </div>
+      <div class="col-md-6">
+        <label for="sel1">Title :</label>
+        <input type="text" class="form-control" id="title">
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" style="margin-top: 10px;">
+      <a href="#/searcher" class="btn btn-block btn-info">Clear</a>
+    </div>
+    <div class="col-md-6" style="margin-top: 10px;">
+      <a href="#/search-movie" class="btn btn-block btn-success">Search</a>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<div id="found-movies">
+</div>
