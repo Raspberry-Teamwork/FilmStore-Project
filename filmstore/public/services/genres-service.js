@@ -30,13 +30,7 @@ class GenreService {
 
                         for (let i of genres) {
                             var currentGenre = i.trim();
-
-                            console.log(`/${currentGenre.replace('"','').replace('"','').toLowerCase()}/ and #${element.toLowerCase()}`);
-                            console.log(`/${currentGenre.toLowerCase() === element.toLowerCase()}`);
-
-
                              if (currentGenre.replace('"','').replace('"','').toLowerCase()===element.toLowerCase()) {
-                                 console.log("HITTTT");
                                  moviesWithGenres.push(currentMovie);
                                 }
                         }

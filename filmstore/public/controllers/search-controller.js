@@ -23,7 +23,6 @@ class Search {
                                           selected:null,
                                             options: genres.genres,
                                             return:{
-
                                             }
                                         }, placeholder: {
                                             type: String,
